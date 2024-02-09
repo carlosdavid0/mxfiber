@@ -40,7 +40,7 @@ const filterCities = (value: string) => {
                     className="h-14 m-0 w-full bg-transparent border-b-2 border-gray-300 outline-none text-white placeholder:text-gray-200/50 placeholder:font-thin transition-all duration-150 text-2xl" placeholder="Escolha sua cidade" autoFocus />
             </form>
 
-            <ul className="ml-10 space-y-5 flex-grow max-h-80 overflow-y-auto scrollBarCities">
+            <ul className="ml-10 space-y-5 flex-grow max-h-[70%] overflow-y-auto scrollBarCities">
                 {filteredCities.map((cidade, index) => (
                     <li key={index} className="flex items-center space-x-4">
                         <Link href={`${cidade.slug}/para-voce`}>

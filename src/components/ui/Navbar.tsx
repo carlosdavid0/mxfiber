@@ -1,82 +1,75 @@
-'use client'
-
-import { useState } from "react";
 import Link from "next/link";
-import { ChevronDownIcon, Bars3Icon, PhoneIcon, XMarkIcon } from '@heroicons/react/20/solid';
-import Logo from "../../../public/logo-blue.png";
+
+import Logo from '../../../public/logo-blue.png'
 import Image from "next/image";
+import { Bars3Icon } from "@heroicons/react/20/solid";
 
 export function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
-
     return (
-        <header>
-            <div>
-
-                <div className="bg-gradient-to-tr bg-mx-blue-950 py-5 flex items-center justify-between px-10">
-                    <div className="flex items-center gap-2">
-                        <button className="text-md text-white/90 font-bold flex items-center gap-2 hover:text-white">
-                            <PhoneIcon className="w-5 text-mx-green-500 hover:scale-110" />
-                            Ligamos Para Você
-                        </button>
+        <>
+            <div className="main-navbar">
+                <div className="navbar__block" />
+                <div className="navbar">
+                    <div className="navbar__top">
+                        <div className="container__top">
+                            <div className="navbar__top-left">
+                                <div className="number-contact">Ligamos para você</div>
+                            </div>
+                            <div className="navbar__top-right">
+                                <p>David</p>
+                                {/* <div>{city}</div>
+                                {city ? (
+                                    <img
+                                        alt="trocar cidade"
+                                        src={
+                                            themeType === 'light'
+                                                ? DarkChevronDownIcon
+                                                : LightChevronDownIcon
+                                        }
+                                    />
+                                ) : null} */}
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <button className="flex items-center gap-2">
-                            <p className="text-white">Varjota - CE</p>
-                            <ChevronDownIcon className="w-5 text-mx-green-500" />
-                        </button>
+                    <div className="navbar__bottom">
+                        <div className="container__bottom">
+                            <div className="navbar__bottom-left">
+                                <div className="bottom__left">
+                                    <Link href={'/'}>
+                                        <Image
+                                            src={Logo}
+                                            alt=""
+                                        ></Image>
+                                    </Link>
+                                    <div className="bottom__left-options">
+                                        <Link href={''}>PARA VOCÊ</Link>
+                                        <Link href={''}>PARA EMPRESAS</Link>
+                                        <Link href={''}>BLOG</Link>
+                                        <Link href={''}>Institucional</Link>
+                                    </div>
+                                </div>
+                                <div className="bottom__right">
+                                    <div className="bottom__right-options">
+                                        <Link href={''}>Produtos e serviços</Link>
+                                    </div>
+                                    <button >Assine já</button>
+                                    <button>2ª Via</button>
+                                    <button>
+
+                                        Minha Online
+                                    </button>
+                                </div>
+                                <div
+                                    className="bottom__right-mobile"
+                                    style={{ margin: 'auto 0' }}
+                                >
+                                   <Bars3Icon className="w-10" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <nav className="flex sm:flex-row items-center justify-between gap-10 py-6 px-6 sm:px-10 w-full"> {/* Adicionando justify-between aqui */}
-                    <div className="w-24 ">
-                        <Link href="/" className="w-24 ">
-                            <Image src={Logo} alt="Logo" />
-                        </Link>
-                    </div>
-                    <div className="sm:hidden">
-                        <button onClick={toggleMenu} className="text-black">
-                            {isOpen ? (
-                                <XMarkIcon className="w-6 h-6" />
-                            ) : (
-                                <Bars3Icon className="w-6 h-6" />
-                            )}
-                        </button>
-                    </div>
-                    <div className={`sm:flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 text-lg ${isOpen ? "flex" : "hidden"} flex-1`}>
-                        <Link href="/para-voce">
-                            <p className="text-mx-blue-800 hover:text-mx-blue-900 duration-200 transition-all font-medium link-underline link-underline-black">Para você</p>
-                        </Link>
-                        <Link href="/para-empresas">
-                            <p className="text-mx-blue-800 hover:text-mx-blue-900 duration-200 transition-all font-medium link-underline link-underline-black">Para empresas</p>
-                        </Link>
-                        <Link href="/contato">
-                            <p className="text-mx-blue-800 hover:text-mx-blue-900 duration-200 transition-all font-medium link-underline link-underline-black">Entreterimento</p>
-                        </Link>
-                        <Link href="/cidades">
-                            <p className="text-mx-blue-800 hover:text-mx-blue-900 duration-200 transition-all font-medium link-underline link-underline-black">Indique um amigo</p>
-                        </Link>
-                        <Link href="/cidades">
-                            <p className="text-mx-blue-800 hover:text-mx-blue-900 duration-200 transition-all font-medium link-underline link-underline-black">Institucional</p>
-                        </Link>
-                    </div>
-                    <div className={` items-center gap-5 ${isOpen ? 'flex' : 'hidden'}`}>
-                        <button className="m-0 bg-mx-green-under text-lg py-2 rounded-md text-mx-blue-800 px-4 transform transition-transform duration-500 ease-in-out hover:-translate-y-5">
-                            Assine Já
-                        </button>
-                        <button className="m-0 bg-mx-blue-500 text-lg py-2 rounded-md text-white px-4 transform transition-transform duration-500 ease-in-out hover:-translate-y-5">
-                            Minha MX
-                        </button>
-                        <button className="m-0 bg-indigo-800 text-lg py-2 rounded-md text-white px-4 transform transition-transform duration-500 ease-in-out hover:-translate-y-5">
-                            2ª Via
-                        </button>
-                    </div>
-
-                </nav>
             </div>
-        </header>
+        </>
     )
 }
