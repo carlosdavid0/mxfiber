@@ -1,20 +1,47 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+ 
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        'mx-blue': {
+          '50': '#e4f6ff',
+          '100': '#cfecff',
+          '200': '#a8dbff',
+          '300': '#74c0ff',
+          '400': '#3e92ff',
+          '500': '#1364ff',
+          '600': '#0051ff',
+          '700': '#0051ff',
+          '800': '#0049e4',
+          '900': '#0032b0',
+          '950': '#00207d',
       },
+      'mx-green': {
+        'under':'#aafa07',
+        '50': '#edfff4',
+        '100': '#d5ffe7',
+        '200': '#aeffcf',
+        '300': '#70ffab',
+        '400': '#2bfd80',
+        '500': '#00d958',
+        '600': '#00c049',
+        '700': '#00963d',
+        '800': '#067534',
+        '900': '#07602d',
+        '950': '#003717',
+    },
+    
+      },
+      
     },
   },
   plugins: [],
-};
-export default config;
+}
