@@ -8,10 +8,11 @@ import {
     NextButton
 } from './ControllCarrossel'
 import Autoplay from 'embla-carousel-autoplay';
+import { Banner } from '@/types/banners'
 
 
 type PropType = {
-    slides: string[]
+    slides: Banner[]
     options?: EmblaOptionsType
 }
 
@@ -58,29 +59,34 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
     return (
         <>
-            <div className="embla mt-4">
+            <div className="embla mt-6">
                 <div className="embla__viewport" ref={emblaRef}>
                     <div className="embla__container">
                         {slides.map((item, index) => (
                             <div className="embla__slide h-[20%]" key={index}>
-                                
+
                                 <img
-                                    className="embla__slide__img w-screen h-[20%] object-cover"
-                                    src={`${item}`}
-                                    alt="Your alt text"
+                                    className="sm:block hidden embla__slide__img w-screen h-[10%] object-cover"
+                                    src={`${process.env.NEXT_PUBLIC_API_URL}/assets/${item.imagem.id}`}
+                                    alt={`Banner ${index + 1}`}
+                                />
+                                <img
+                                    className="sm:hidden block embla__slide__img w-screen h-[10%] object-cover"
+                                    src={`${process.env.NEXT_PUBLIC_API_URL}/assets/${item.mobile_image.id}`}
+                                    alt={`Banner ${index + 1}`}
                                 />
                             </div>
                         ))}
                     </div>
                 </div>
-
+{/* 
                 <div className="embla__buttons">
                     <PrevButton onClick={scrollPrev} disabled={prevBtnDisabled} />
                     <NextButton onClick={scrollNext} disabled={nextBtnDisabled} />
-                </div>
+                </div> */}
             </div>
 
-            <div className="embla__dots">
+            {/* <div className="embla__dots">
                 {scrollSnaps.map((_, index) => (
                     <DotButton
                         key={index}
@@ -90,7 +96,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                         )}
                     />
                 ))}
-            </div>
+            </div> */}
         </>
     )
 }

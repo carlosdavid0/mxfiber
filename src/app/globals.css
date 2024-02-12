@@ -92,10 +92,10 @@ a:hover {
 .navbar {
   margin: 0;
   display: block;
-
+  background-color: #105bcf;
   position: fixed;
   top: 0;
-  z-index: 200;
+  z-index: 100;
   width: 100%;
   background-color: var(--background);
   color: var(--text);
@@ -117,10 +117,11 @@ a:hover {
 .container__top {
   max-width: 1240px;
   font-weight: 400;
-  padding: 5px 20px;
+  padding: 10px 20px;
   position: relative;
   margin: 0 auto;
   align-items: center;
+  gap: 20px;
   justify-content: space-between;
   display: flex;
 }
@@ -130,6 +131,7 @@ a:hover {
   gap: 1.9rem;
   height: 38px;
   align-items: center;
+  color: #f0f1f2;
   justify-content: flex-start;
 }
 
@@ -141,6 +143,7 @@ a:hover {
   text-transform: capitalize;
   font-size: 14px;
   display: flex;
+  color: #f0f1f2;
   flex-direction: row;
 }
 
@@ -153,6 +156,7 @@ a:hover {
 .navbar__bottom {
   display: flex;
   position: relative;
+  background-color: #f0f1f2;
   width: 100%;
   z-index: 200;
   height: 119.594px;
