@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
+    "@vercel/speed-insights": "^1.0.9",
     "embla-carousel-autoplay": "^8.0.0-rc22",
     "embla-carousel-react": "^8.0.0-rc22",
     "graphql-request": "^6.1.0",
