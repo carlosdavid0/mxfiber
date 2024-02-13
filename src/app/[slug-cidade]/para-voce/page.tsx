@@ -34,7 +34,7 @@ async function getCityData(slug: string) {
 
 }
 
-export async function getCarroselData(slug: string) {
+async function getCarroselData(slug: string) {
     const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
     const query = gql`
         query {
