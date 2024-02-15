@@ -1,6 +1,8 @@
 import { EmblaCarousel } from "@/components/ui/CarroselHome";
+import { EntreterimentoSection } from "@/components/ui/EntreterimentoSection";
 import { Navbar } from "@/components/ui/Navbar";
 import { PriceSession } from "@/components/ui/Price-section";
+import { Svas } from "@/types/Sva";
 import { Banner } from "@/types/banners";
 import { Cidade } from "@/types/cidades";
 import { Plano } from "@/types/planos";
@@ -147,6 +149,39 @@ async function getCarroselData(slug: string) {
 
 }
 
+async function getSVAs(slug: string) {
+    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
+    const query = gql`
+    query {
+        sva(sort: ["sort", "date_created"]) {
+          nome
+          date_created
+          categoria_em_plano
+          color_de_fundo
+          descricao
+          icone {
+            width
+            height
+            id
+          }
+        }
+      }
+         
+    `
+
+
+
+    const data: { sva: Svas[] } = await request(endpoint, query);
+
+
+    return {
+        svas: data?.sva
+    }
+
+
+
+
+}
 
 
 export default async function ParaVoce({ params }: { params: { "slug-cidade": string } }) {
@@ -157,15 +192,15 @@ export default async function ParaVoce({ params }: { params: { "slug-cidade": st
 
     const { planos } = await getPlanos(params["slug-cidade"])
 
+    const { svas } = await getSVAs(params["slug-cidade"])
+
 
     return (
         <>
             <Navbar cidade={cidade} />
             <EmblaCarousel slides={banners} />
             <PriceSession planos={planos} />
-
-            
-
+            <EntreterimentoSection svas={svas} />
         </>
     )
 }

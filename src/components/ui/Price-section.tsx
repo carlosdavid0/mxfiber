@@ -4,8 +4,6 @@ import { Plano } from "@/types/planos";
 import { CheckBadgeIcon, HeartIcon, PlusCircleIcon, RocketLaunchIcon } from "@heroicons/react/20/solid";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
-import { Dialog } from '@headlessui/react'
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { ModalBeneficios } from "./ModalBeneficios";
 
@@ -15,8 +13,6 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
 
     const [plano, setPlano] = useState<Plano>()
 
-
-
     function handleOpenDialog(plano: Plano) {
         setPlano(plano)
 
@@ -25,7 +21,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
     return (
         <section>
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-10 lg:px-6">
-                <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+                <div className="mx-auto max-w-screen-lg text-center mb-8 lg:mb-12">
                     <h2 className="text-4xl tracking-tight font-normal text-blue-700">
                         Mais alta velocidade de <span className="font-semibold">
                             conexão por toda sua casa
@@ -85,7 +81,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                     removeArrowOnDeviceType={["tablet", "mobile"]}
                     shouldResetAutoplay
                     showDots={false}
-                 
+
                     slidesToSlide={1}
                     ssr={true}
                     swipeable
@@ -137,7 +133,9 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                                     <button className="w-full bg-pink-600 rounded-b-lg text-md h-14  px-4 transform transition-transform duration-500 ease-in-out hover:bg-pink-500" onClick={() => handleOpenDialog(item)}>
                                         <div className="flex items-center justify-center gap-2">
                                             <HeartIcon className="w-5 text-mx-green-under" />
-                                            <span className="text-xl text-white">Confira nosso beneficios</span>
+                                            <span className="text-xl text-white">
+                                                Confira nossos beneficios
+                                            </span>
                                         </div>
                                     </button>
                                 </div>

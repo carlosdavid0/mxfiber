@@ -34,7 +34,7 @@ export function ModalBeneficios({ plano, onClose }: { plano: Plano | undefined, 
         <>
 
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as="div" className="relative z-50  w-screen " onClose={closeModal}>
+                <Dialog as="div" className="relative z-50  overflow-y-auto" onClose={closeModal}>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -47,8 +47,8 @@ export function ModalBeneficios({ plano, onClose }: { plano: Plano | undefined, 
                         <div className="fixed inset-0 bg-black/25" />
                     </Transition.Child>
 
-                    <div className="fixed inset-0 overflow-y-auto rounded-lg  w-screen ">
-                        <div className="flex min-h-full items-center justify-center p-4 text-center  w-screen ">
+                    <div className="fixed inset-0 overflow-y-auto rounded-lg">
+                        <div className="flex min-h-full items-center justify-center p-4 text-center">
                             <Transition.Child
                                 as={Fragment}
                                 enter="ease-out duration-300"
@@ -58,7 +58,7 @@ export function ModalBeneficios({ plano, onClose }: { plano: Plano | undefined, 
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className=" max-w-md transform overflow-hidden rounded-lg  w-screen  bg-white  text-left align-middle shadow-xl transition-all">
+                                <Dialog.Panel className=" max-w-xl transform overflow-hidden rounded-lg bg-white  text-left align-middle shadow-xl transition-all">
                                     <Dialog.Title
                                         as="h3"
                                         className="text-4xl font-medium leading-6 text-mx-blue-600"
@@ -101,11 +101,11 @@ export function ModalBeneficios({ plano, onClose }: { plano: Plano | undefined, 
                                                 </div>
 
 
-                                                <ul className="grid grid-cols-4 px-2">
+                                                <ul className="grid grid-cols-4 px-5 gap-5">
                                                     {plano?.svas.map((servico, index) => (
                                                         <li className="flex items-center" key={index}>
 
-                                                            <img src={`${process.env.NEXT_PUBLIC_API_URL}/assets/${servico.sva_id.icone.id}`} alt={servico.sva_id.nome} />
+                                                            <img src={`${process.env.NEXT_PUBLIC_API_URL}/assets/${servico.sva_id.icone.id}`} alt={servico.sva_id.nome} className='w-28' />
 
                                                         </li>
                                                     ))}
@@ -116,7 +116,7 @@ export function ModalBeneficios({ plano, onClose }: { plano: Plano | undefined, 
                                         )}
 
                                         <div>
-                                            
+
                                             <button onClick={closeModal} className="w-full text-md h-14  px-4 transform transition-transform duration-500 ease-in-out ">
                                                 <p>Fechar</p>
                                             </button>
