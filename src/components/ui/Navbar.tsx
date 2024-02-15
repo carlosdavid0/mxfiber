@@ -1,14 +1,12 @@
+'use client'
 
 import Link from "next/link";
 import Logo from '../../../public/logo-blue.png'
 import Image from "next/image";
-import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/20/solid";
+import { Bars3Icon, ChevronDownIcon, PhoneIcon } from "@heroicons/react/20/solid";
 
 import { Cidade } from "@/types/cidades";
-import { useEffect, useState } from "react";
-
-
-
+// import { useEffect, useState } from "react";
 
 
 type props = {
@@ -20,12 +18,15 @@ export async function Navbar({ cidade }: props) {
     return (
         <>
             <div className="main-navbar">
-                <div className="navbar__block" />
+               
                 <div className="navbar">
                     <div className="navbar__top">
                         <div className="container__top">
                             <div className="navbar__top-left">
-                                <div className="text-sm lg:text-lg">Ligamos para você</div>
+                                <div className="text-sm lg:text-lg flex items-center gap-2">
+                                    <PhoneIcon className="w-6" />
+                                    Ligamos para você
+                                </div>
                             </div>
                             <div>
                                 <Link href={`/`} className="flex text-gray-100 hover:text-white cursor-pointer gap-2 ">

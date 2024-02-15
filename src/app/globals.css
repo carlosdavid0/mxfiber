@@ -8,10 +8,11 @@ html,
 body,
 #root,
 .app {
- 
+
   font-family: 'Poppins';
   @apply bg-gray-100 text-gray-500
 }
+
 a:hover {
   @apply transition duration-200;
   @apply text-gray-700
@@ -20,7 +21,7 @@ a:hover {
 
 /* Custom scrollbar in select cities  */
 .scrollBarCities::-webkit-scrollbar {
-  width:  6px;
+  width: 6px;
   height: 2px;
 }
 
@@ -32,7 +33,8 @@ a:hover {
 .scrollBarCities::-webkit-scrollbar-thumb {
   background: #f0f1f2;
   border-radius: 10px;
-  height:  6px; /* Altura desejada */
+  height: 6px;
+  /* Altura desejada */
 }
 
 .scrollBarCities::-webkit-scrollbar-thumb:hover {
@@ -53,7 +55,7 @@ a:hover {
 
 .link-underline-black {
   background-image: linear-gradient(transparent, transparent),
-    linear-gradient(#aafa07,#aafa07);
+    linear-gradient(#aafa07, #aafa07);
 }
 
 .link-underline:hover {
@@ -71,6 +73,7 @@ a:hover {
   from {
     transform: translateX(-100%);
   }
+
   to {
     transform: translateX(0);
   }
@@ -80,9 +83,11 @@ a:hover {
 .embla {
   overflow: hidden;
 }
+
 .embla__container {
   display: flex;
 }
+
 .embla__slide {
   flex: 0 0 100%;
   min-width: 0;
@@ -93,9 +98,8 @@ a:hover {
   margin: 0;
   display: block;
   background-color: #105bcf;
-  position: fixed;
-  top: 0;
-  z-index: 100;
+
+
   width: 100%;
   background-color: var(--background);
   color: var(--text);
@@ -105,6 +109,17 @@ a:hover {
 .navbar__block {
   height: 157.594px;
 }
+
+body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
+  right: 0px;
+}
+
+body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
+  left: 0px;
+}
+
+
+
 
 .navbar__top {
   width: 100%;
@@ -118,7 +133,9 @@ a:hover {
   max-width: 1240px;
   font-weight: 400;
   padding: 10px 20px;
-  position: relative;
+  position: sticky;
+  bottom: 0 !important;
+  z-index: 1000;
   margin: 0 auto;
   align-items: center;
   gap: 20px;
@@ -158,7 +175,7 @@ a:hover {
   position: relative;
   background-color: #f0f1f2;
   width: 100%;
-  z-index: 200;
+
   height: 119.594px;
 }
 
@@ -228,20 +245,25 @@ a:hover {
   .navbar__block {
     height: 149.625px;
   }
+
   .navbar__bottom {
     height: 111.625px;
   }
+
   .bottom__left-options,
   .bottom__right {
     display: none;
   }
+
   .bottom__right-mobile {
     right: 0px;
     display: block;
   }
+
   .container__bottom {
     padding: 0 5%;
   }
+
   .container__bottom img {
     width: 90px;
     margin-right: 40px;
