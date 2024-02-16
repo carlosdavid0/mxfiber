@@ -18,9 +18,8 @@ export function EntreterimentoSection({ svas }: { svas: Svas[] }) {
 
                 <section className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8'>
                     {svas.map((sva, index) => (
-                        <div>
+                        <div key={index}>
                             <div
-
                                 className={`flex items-end justify-end rounded-lg shadow-lg`}>
                                 <div className=" flex w-fit px-4  rounded-lg z-10 items-end justify-end" style={{ backgroundColor: sva.color_de_fundo }}>
                                     <p className="text-white text-xl">{sva.categoria_em_plano}</p>

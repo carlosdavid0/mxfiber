@@ -1,7 +1,10 @@
 import { EmblaCarousel } from "@/components/ui/CarroselHome";
+import { DirectGo } from "@/components/ui/DirectGo";
 import { EntreterimentoSection } from "@/components/ui/EntreterimentoSection";
+import { Footer } from "@/components/ui/Footer";
 import { Navbar } from "@/components/ui/Navbar";
 import { PriceSession } from "@/components/ui/Price-section";
+import { TalkPlace } from "@/components/ui/TalkPlace";
 import { Svas } from "@/types/Sva";
 import { Banner } from "@/types/banners";
 import { Cidade } from "@/types/cidades";
@@ -77,23 +80,27 @@ async function getCityData(slug: string) {
 async function getPlanos(slug: string) {
     const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
     const query = gql`query {
-   
-        planos(filter: {cidades: {cidades_id: {slug: {_eq: "${slug}"}}}}){
+        planos(filter: {
+            _and: [
+                {cidades: {cidades_id: {slug: {_eq: "${slug}"}}}},
+                {status:{_eq: "published"}},
+                {tipo_de_plano: {_eq: "para-voce"}}
+            ]
+        }) {
             nome
             id
-            servicos{
-                servicos_id{
+            servicos {
+                servicos_id {
                     id
                     nome
                 }
             }
             svas {
-                sva_id{
+                sva_id {
                     nome
                     categoria_em_plano
                     color_de_fundo
-                    
-                    icone{
+                    icone {
                         width
                         height
                         id
@@ -201,6 +208,9 @@ export default async function ParaVoce({ params }: { params: { "slug-cidade": st
             <EmblaCarousel slides={banners} />
             <PriceSession planos={planos} />
             <EntreterimentoSection svas={svas} />
+            <DirectGo />
+            <TalkPlace />
+            <Footer />
         </>
     )
 }

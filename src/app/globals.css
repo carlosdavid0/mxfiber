@@ -93,6 +93,9 @@ a:hover {
   min-width: 0;
 }
 
+img{
+  user-select: none;
+}
 
 .navbar {
   margin: 0;
@@ -113,9 +116,12 @@ a:hover {
 
 body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
   right: 0px;
+  z-index: auto;
 }
 
+
 body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
+  z-index: auto;
   left: 0px;
 }
 

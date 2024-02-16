@@ -78,10 +78,10 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                     }}
                     rewind={false}
                     rewindWithAnimation={false}
-                    removeArrowOnDeviceType={["tablet", "mobile"]}
+                    
                     shouldResetAutoplay
                     showDots={false}
-
+                    
                     slidesToSlide={1}
                     ssr={true}
                     swipeable
