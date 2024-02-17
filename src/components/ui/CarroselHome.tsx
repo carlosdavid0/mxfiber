@@ -59,7 +59,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
     return (
         <>
-            <div className="embla lg:mt-[10%] mt-[40%]">
+            <div className="embla lg:mt-32 md:mt-44  mt-36">
                 <div className="embla__viewport" ref={emblaRef}>
                     <div className="embla__container">
                         {slides.map((item, index) => (

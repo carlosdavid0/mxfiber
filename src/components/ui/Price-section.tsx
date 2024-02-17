@@ -56,7 +56,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                                 max: 3000,
                                 min: 1024
                             },
-                            items: 3,
+                            items: 4,
                             partialVisibilityGutter: 20
                         },
                         mobile: {
@@ -88,7 +88,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                 >
 
                     {planos.map((item, index) => (
-                        <div key={index} className="flex flex-col mx-5 max-w-xl text-center text-gray-900 bg-white rounded-lg select-none">
+                        <div key={index} className="flex flex-col mx-5 max-w-lg text-center text-gray-900 bg-white rounded-lg select-none">
                             <div className="flex items-center justify-center flex-col px-2 pt-2 ">
                                 <div className="bg-blue-600 flex items-center justify-center h-full w-full py-5 px-2 rounded-lg ">
                                     <h3 className="lg:text-[40px] text-[30px] font-semibold flex flex-col">
@@ -114,7 +114,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                             </div>
                             <div className="">
 
-                                <ul role="list" className=" space-y-4 text-left xl:p-8  p-6 h-52 pb-10 ">
+                                <ul role="list" className=" space-y-2 text-left xl:p-8  p-6 h-56 pb-10 ">
                                     {item.servicos.map((servico, index) => (
                                         <li className="flex items-center space-x-3" key={index}>
                                             <CheckBadgeIcon className="w-4 text-mx-blue-800" />
@@ -134,7 +134,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                                         <div className="flex items-center justify-center gap-2">
                                             <HeartIcon className="w-5 text-mx-green-under" />
                                             <span className="text-xl text-white">
-                                                Confira nossos beneficios
+                                                 Nossos beneficios
                                             </span>
                                         </div>
                                     </button>

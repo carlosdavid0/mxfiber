@@ -97,6 +97,25 @@ img{
   user-select: none;
 }
 
+body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
+  right: 0px;
+  z-index: auto;
+  background-color: #105bcf;
+}
+body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:hover {
+  background-color: #3983f2;
+}
+
+
+body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
+  z-index: auto;
+  left: 0px;
+  background-color: #105bcf;
+}
+body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left:hover {
+  background-color: #3983f2;
+}
+
 .navbar {
   margin: 0;
   display: block;
@@ -113,20 +132,6 @@ img{
 .navbar__block {
   height: 157.594px;
 }
-
-body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
-  right: 0px;
-  z-index: auto;
-}
-
-
-body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
-  z-index: auto;
-  left: 0px;
-}
-
-
-
 
 .navbar__top {
   width: 100%;
@@ -183,7 +188,7 @@ body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.re
   background-color: #f0f1f2;
   width: 100%;
 
-  height: 119.594px;
+  height: 6rem;
 }
 
 .container__bottom {
@@ -247,6 +252,42 @@ body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.re
 .bottom__right-mobile {
   display: none;
 }
+.mobile-menu {
+  position: absolute;
+  top:  100%;
+  left:  0;
+  right:  0;
+  background-color: #f0f1f2;
+  display: flex;
+  flex-direction: column;
+  gap:  10px;
+  padding:  20px;
+  box-shadow: rgba(0,  0,  0,  0.15)  0px  0px  8px  0px;
+  overflow: hidden;
+  max-height:  0;
+  transition: max-height  0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+  max-height:  500px; /* Ajuste este valor conforme necessário */
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: var(--text);
+  transition: color  0.4s;
+}
+
+.mobile-menu a:hover {
+  color: var(--color-primary);
+  transition: color  0.4s;
+}
+
+.mobile-menu button {
+  margin-top:  10px;
+}
+
+
 
 @media (max-width: 1090px) {
   .navbar__block {
@@ -275,4 +316,26 @@ body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.re
     width: 90px;
     margin-right: 40px;
   }
+}
+
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+/* Ajuste conforme necessário */
+}
+
+.loading-spinner {
+  border:   2px solid #f3f3f3; /* Cor de fundo do spinner */
+  border-top:  2px solid #3498db; /* Cor do spinner */
+  border-radius:   50%;
+  width:   20px;
+  height:   20px;
+  animation: spin   2s ease-in-out infinite; /* Ajuste a duração conforme necessário */
+}
+
+@keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
 }

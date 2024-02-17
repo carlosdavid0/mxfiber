@@ -19,18 +19,18 @@ export default async function Home() {
   const data = await getCities();
 
   return (
-    
-    <main className="bg-gradient-to-tr from-blue-900 via-sky-900 to-indigo-900 min-h-screen flex flex-col justify-between py-4 px-6 sm:px-10">
-      <section className="space-y-10 w-full sm:w-3/4 lg:w-[700px] xl:w-[700px] mx-auto">
-        <div className="space-y-3 flex justify-center">
-          <Image
-            className="w-[20%]"
-            src={Logo}
-            alt="Logo"
-          />
-        </div>
+
+    <main className="bg-gradient-to-tr from-blue-900 via-sky-900 to-indigo-900 
+ grid lg:grid-cols-2 grid-cols-1 min-h-screen max-h-max">
+      <div className="lg:block hidden">
+        <img src="https://res.cloudinary.com/dsolucoes/image/upload/v1708203187/izbbxlsps0mm0mshzafs.png" alt="Imagem de uma cidade" className="w-full max-h-screen min-h-full" />
+      </div>
+      <div className="px-6 py-7 space-y-5">
+        <Image src={Logo} alt="MXFiber" className='lg:w-[15%] md:w-[17%] w-[25%]' />
         <ListCitiesHome data={data} />
-      </section>
+      </div>
+
+
     </main >
   );
 }
