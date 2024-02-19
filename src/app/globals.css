@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -13,10 +13,6 @@ body,
   @apply bg-gray-100 text-gray-500
 }
 
-a:hover {
-  @apply transition duration-200;
-  @apply text-gray-700
-}
 
 
 /* Custom scrollbar in select cities  */
@@ -43,7 +39,7 @@ a:hover {
 }
 
 
-.link-underline {
+.link-400line {
   border-bottom-width: 0;
   background-image: linear-gradient(transparent, transparent),
     linear-gradient(#fff, #fff);
@@ -53,12 +49,12 @@ a:hover {
   transition: background-size 0.5s ease-in-out;
 }
 
-.link-underline-black {
+.link-400line-black {
   background-image: linear-gradient(transparent, transparent),
     linear-gradient(#aafa07, #aafa07);
 }
 
-.link-underline:hover {
+.link-400line:hover {
   background-size: 100% 3px;
   background-position: 0 100%;
 }
@@ -97,24 +93,6 @@ img{
   user-select: none;
 }
 
-body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
-  right: 0px;
-  z-index: auto;
-  background-color: #105bcf;
-}
-body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right:hover {
-  background-color: #3983f2;
-}
-
-
-body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
-  z-index: auto;
-  left: 0px;
-  background-color: #105bcf;
-}
-body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left:hover {
-  background-color: #3983f2;
-}
 
 .navbar {
   margin: 0;
@@ -142,7 +120,7 @@ body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.re
 }
 
 .container__top {
-  max-width: 1240px;
+  max-width: 1200px;
   font-weight: 400;
   padding: 10px 20px;
   position: sticky;
@@ -185,36 +163,23 @@ body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.re
 .navbar__bottom {
   display: flex;
   position: relative;
-  background-color: #f0f1f2;
+  background-color: white;
   width: 100%;
 
   height: 6rem;
 }
 
 .container__bottom {
-  padding: 0 20px;
+  padding: 0 10px;
   display: flex;
   width: 100%;
   margin: auto;
-  max-width: 1240px;
+  max-width: 1260px;
 }
 
-.container__bottom a {
-  text-decoration: none;
-  color: var(--text);
-  transition: color 0.4s;
-}
 
-.container__bottom a:hover {
-  color: var(--color-primary);
-  transition: color 0.4s;
-}
 
-.container__bottom img {
-  margin: auto;
-  width: 100px;
-  margin-right: 20px;
-}
+
 
 .navbar__bottom-left {
   display: flex;
@@ -226,6 +191,7 @@ body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.re
 
 .bottom__left {
   display: flex;
+  align-items: center;
   gap: 20px;
   margin: auto 0;
 }
@@ -236,10 +202,7 @@ body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.re
   gap: 20px;
 }
 
-.bottom__right {
-  display: flex;
-  gap: 21px;
-}
+
 
 .bottom__right-options {
   font-weight: 400;
@@ -272,16 +235,6 @@ body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.re
   max-height:  500px; /* Ajuste este valor conforme necessário */
 }
 
-.mobile-menu a {
-  text-decoration: none;
-  color: var(--text);
-  transition: color  0.4s;
-}
-
-.mobile-menu a:hover {
-  color: var(--color-primary);
-  transition: color  0.4s;
-}
 
 .mobile-menu button {
   margin-top:  10px;
@@ -312,12 +265,37 @@ body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.re
     padding: 0 5%;
   }
 
-  .container__bottom img {
-    width: 90px;
-    margin-right: 40px;
-  }
 }
 
+@layer components {
+  .bottom__left-options a, .mobile-menu a {
+    @apply text-mx-blue-500;
+    font-weight: 500;
+    font-size: 1.1rem;
+    @apply transition-all;
+    @apply duration-500;
+  }
+  .bottom__left-options a:hover, .mobile-menu a:hover {
+    font-weight: 600;
+    @apply transition;
+    @apply text-blue-500;
+    @apply underline;
+    @apply transition-all;
+    @apply duration-500;
+    text-decoration-thickness:  3px; /* Espessura do sublinhado em  2px */
+    text-decoration-color: theme('colors.mx-green[500]'); ; 
+  }
+  
+  .bottom__left-options a.current, .mobile-menu a.current{
+    @apply text-mx-blue-800;
+    font-weight: 700;
+    @apply underline;
+    @apply transition-all;
+    @apply duration-500;
+    text-decoration-thickness:  3px; /* Espessura do sublinhado em  2px */
+    text-decoration-color: theme('colors.mx-green[500]'); ; 
+  }
+}
 
 .loading-container {
   display: flex;
@@ -339,3 +317,22 @@ body>div>section>div>div.react-multi-carousel-list.container-with-dots>button.re
    0% { transform: rotate(0deg); }
    100% { transform: rotate(360deg); }
 }
+
+@layer components {
+  #servicos svg{
+    width: 18px;
+    height: 18px;
+    fill:  theme('colors.mx-green[400]');
+   }
+  #servicos-no-default svg{
+    width: 18px;
+    height: 18px;
+    fill:  theme('colors.mx-blue[800]');
+   }
+
+ 
+}
+
+
+
+

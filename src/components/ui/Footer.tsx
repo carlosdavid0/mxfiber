@@ -20,19 +20,19 @@ export function Footer() {
                             <ul className="text-gray-500  font-medium space-y-2">
 
                                 <li className=''>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Quem Somos</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">Quem Somos</a>
                                 </li>
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Ética</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">Ética</a>
                                 </li>
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Política de Privacidade</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">Política de Privacidade</a>
                                 </li>
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Seja Parceiro</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">Seja Parceiro</a>
                                 </li>
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">LGPD</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">LGPD</a>
                                 </li>
                             </ul>
                         </div>
@@ -41,19 +41,19 @@ export function Footer() {
                             <ul className="text-gray-500  font-medium space-y-2">
 
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Indique um Amigo</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">Indique um Amigo</a>
                                 </li>
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Minha MX</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">Minha MX</a>
                                 </li>
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Ouvidoria</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">Ouvidoria</a>
                                 </li>
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">2ª via do boleto</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">2ª via do boleto</a>
                                 </li>
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Teste de conexão</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">Teste de conexão</a>
                                 </li>
 
                             </ul>
@@ -63,13 +63,13 @@ export function Footer() {
                             <ul className="text-gray-500  font-medium space-y-2">
 
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Combos</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">Combos</a>
                                 </li>
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">TV</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">TV</a>
                                 </li>
                                 <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Para empresas</a>
+                                    <a href="https://tailwindcss.com/" className="hover:400line">Para empresas</a>
                                 </li>
 
                             </ul>
@@ -79,9 +79,9 @@ export function Footer() {
                 </div>
                 <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
                 <div className="sm:flex sm:items-center sm:justify-between">
-                    <span className="text-sm text-gray-500 sm:text-center ">© {new Date().getFullYear()} <a href={'/'} className="hover:underline">MX Fibra</a>.
+                    <span className="text-sm text-gray-500 sm:text-center ">© {new Date().getFullYear()} <a href={'/'} className="hover:400line">MX Fibra</a>.
 
-                        Powerd by <a href="https://dsolucoes.com/" className="hover:underline hover:text-[#6900ea]">Elavue Tecnologias
+                        Powerd by <a href="https://dsolucoes.com/" className="hover:400line hover:text-[#6900ea]">Elavue Tecnologias
                         </a>.
                     </span>
                     <div className="flex mt-4 sm:justify-center sm:mt-0">

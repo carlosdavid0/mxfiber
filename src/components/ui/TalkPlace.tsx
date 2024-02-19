@@ -33,7 +33,7 @@ export function TalkPlace() {
                         </h2>
                         <div className="flex items-center gap-3 max-w-xl">
                             <button className="bg-mx-blue-800 hover:bg-mx-blue-700 duration-300 transition-all w-48 rounded-lg  space-y-3 flex items-start flex-col px-4 py-6" >
-                                <PhoneIcon className="w-10 text-mx-green-under" />
+                                <PhoneIcon className="w-10 text-mx-green-400" />
                                 <p className="text-lg text-white">
                                     Ligue Já
                                 </p>
@@ -45,7 +45,7 @@ export function TalkPlace() {
                                 </p>
                             </button>
                             <button className=" bg-mx-blue-800 hover:bg-mx-blue-700 duration-300 transition-all w-48 rounded-lg  space-y-3 md:flex hidden items-start flex-col px-4 py-6" >
-                                <DevicePhoneMobileIcon className="w-10 text-mx-green-under" />
+                                <DevicePhoneMobileIcon className="w-10 text-mx-green-400" />
                                 <p className="text-lg text-white">
                                     Minha MX
                                 </p>

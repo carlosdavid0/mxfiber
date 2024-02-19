@@ -11,6 +11,7 @@ import { Cidade } from "@/types/cidades";
 import { Plano } from "@/types/planos";
 import request, { gql } from "graphql-request";
 import { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 
 
 
@@ -40,6 +41,11 @@ export async function generateMetadata(
 `;
 
     const data: { cidades: Cidade[] } = await request(endpoint, query);
+
+    if (!data.cidades[0]) {
+        notFound();
+    }
+
 
     return {
         title: `${data?.cidades[0].nome} | MXFiber`,
@@ -89,9 +95,11 @@ async function getPlanos(slug: string) {
         }) {
             nome
             id
+            recomendado
             servicos {
                 servicos_id {
                     id
+                    icone_personalizado
                     nome
                 }
             }

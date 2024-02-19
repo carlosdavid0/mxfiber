@@ -1,11 +1,19 @@
-import { Inter } from "next/font/google";
+import { Blinker } from "next/font/google";
 import "./globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Providers } from "@/components/providers/Providers";
+import { Metadata } from "next";
 
-const inter = Inter({ subsets: ["latin"] });
+const blinker = Blinker({
+  subsets: ["latin"],
+  weight:['100','200','300','400','600','700','800','900'],
+});
 
+export const metadata: Metadata = {
+  title: "MXFibra",
+  description: "Conheça a cidade de e veja os planos disponíveis para você!",
+  keywords: "MXFibra, Cidades, Planos, Internet, Fibra Óptica"
+};
 
 export default function RootLayout({
   children,
@@ -15,10 +23,10 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <SpeedInsights />
-      <body className={inter.className}>
-        <Providers>
+      <body className={blinker.className}>
+       
           {children}
-        </Providers>
+
       </body>
     </html>
   );

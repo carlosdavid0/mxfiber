@@ -1,6 +1,7 @@
 export interface Plano {
   id: string
   nome: string
+  recomendado: boolean
   servicos: Servico[]
   svas: Sva[]
 }
@@ -12,6 +13,7 @@ export interface Servico {
 export interface ServicosId {
   id: string
   nome: string
+  icone_personalizado: Element
 }
 
 export interface Sva {

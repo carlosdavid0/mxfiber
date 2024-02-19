@@ -65,7 +65,7 @@ export function ModalBeneficios({ plano, onClose }: { plano: Plano | undefined, 
                                     >
                                         <div className="bg-blue-600 flex items-center justify-center h-full w-full py-5 px-2  ">
                                             <h3 className="lg:text-[40px] text-[30px] font-semibold flex flex-col text-center">
-                                                <span className="text-mx-green-under lg:text-[50px] text-[60px]">
+                                                <span className="text-mx-green-400 lg:text-[50px] text-[60px]">
                                                     {plano?.nome.split(' ')[0].trim()}
                                                 </span>
                                                 <span className="mt-5 text-white">
