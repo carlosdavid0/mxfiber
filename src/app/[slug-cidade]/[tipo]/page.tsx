@@ -1,17 +1,19 @@
 import { EmblaCarousel } from "@/components/ui/CarroselHome";
-import { DirectGo } from "@/components/ui/DirectGo";
-import { EntreterimentoSection } from "@/components/ui/EntreterimentoSection";
+import { TV } from "@/components/ui/Tv";
+import { SvasSection } from "@/components/ui/SvasSection";
 import { Footer } from "@/components/ui/Footer";
 import { Navbar } from "@/components/ui/Navbar";
 import { PriceSession } from "@/components/ui/Price-section";
 import { TalkPlace } from "@/components/ui/TalkPlace";
 import { Svas } from "@/types/Sva";
+import { Tvinfo } from "@/types/Tv";
 import { Banner } from "@/types/banners";
 import { Cidade } from "@/types/cidades";
 import { Plano } from "@/types/planos";
 import request, { gql } from "graphql-request";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { EntrerimentSection } from "@/components/ui/EntreterimentsSection";
 
 
 
@@ -50,7 +52,27 @@ export async function generateMetadata(
     return {
         title: `${data?.cidades[0].nome} | MXFiber`,
         description: `MXFiber está em ${data?.cidades[0].nome} e veja os planos disponíveis para você!`,
-        keywords: `MXFiber, ${data?.cidades[0].nome}, Planos, Internet, Fibra Óptica`
+        keywords: `MXFiber, ${data?.cidades[0].nome}, Planos, Internet, Fibra Óptica`,
+        robots: "index, follow",
+        generator: "MXFiber",
+        category: "Internet",
+        publisher: "MXFiber",
+        openGraph: {
+            type: "website",
+            title: `${data?.cidades[0].nome} | MXFiber`,
+            description: `MXFiber está em ${data?.cidades[0].nome} e veja os planos disponíveis para você!`,
+            url: `${process.env.SITE_URL}/${data?.cidades[0].slug}`,
+            siteName: "MXFiber",
+            images: [   
+                {
+                    url: "https://mxfiber.com.br/logo-blue.png",
+                    width: 800,
+                    height: 600,
+                    alt: "MXFiber",
+                },
+            ],
+        },
+
 
     }
 
@@ -83,14 +105,14 @@ async function getCityData(slug: string) {
 
 }
 
-async function getPlanos(slug: string) {
+async function getPlanos({ slug, tipo }: { slug: string, tipo: string }) {
     const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
     const query = gql`query {
         planos(filter: {
             _and: [
                 {cidades: {cidades_id: {slug: {_eq: "${slug}"}}}},
                 {status:{_eq: "published"}},
-                {tipo_de_plano: {_eq: "para-voce"}}
+                {tipo_de_plano: {_eq: "${tipo}"}}
             ]
         }) {
             nome
@@ -164,6 +186,49 @@ async function getCarroselData(slug: string) {
 
 }
 
+
+async function getTvInfo(slug: string) {
+    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
+    const query = gql`
+    query {
+        TVInfo {
+            banner{
+                width,
+                height,
+                id
+            }
+            cor_base,
+            Nome,
+            titulo,
+            descricao,
+            icone{
+                width,
+                height,
+                id
+            }
+        }
+      }
+         
+    `
+
+
+
+
+
+    const data: { TVInfo: Tvinfo } = await request(endpoint, query);
+
+
+
+
+    return {
+        tv: data?.TVInfo
+    }
+
+
+
+
+}
+
 async function getSVAs(slug: string) {
     const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
     const query = gql`
@@ -198,16 +263,17 @@ async function getSVAs(slug: string) {
 
 }
 
-
-export default async function ParaVoce({ params }: { params: { "slug-cidade": string } }) {
+export default async function ParaVoce({ params }: { params: { "slug-cidade": string, tipo: string } }) {
 
     const { cidade } = await getCityData(params["slug-cidade"])
 
     const { banners } = await getCarroselData(params["slug-cidade"])
 
-    const { planos } = await getPlanos(params["slug-cidade"])
+    const { planos } = await getPlanos({ slug: params["slug-cidade"], tipo: params["tipo"] })
 
     const { svas } = await getSVAs(params["slug-cidade"])
+
+    const { tv } = await getTvInfo(params["slug-cidade"])
 
 
     return (
@@ -215,9 +281,10 @@ export default async function ParaVoce({ params }: { params: { "slug-cidade": st
             <Navbar cidade={cidade} />
             <EmblaCarousel slides={banners} />
             <PriceSession planos={planos} />
-            <EntreterimentoSection svas={svas} />
-            <DirectGo />
-            <TalkPlace />
+            <SvasSection svas={svas} planos={planos} />
+            <TV data={tv} />
+            <EntrerimentSection />
+            {/* <TalkPlace /> */}
             <Footer />
         </>
     )

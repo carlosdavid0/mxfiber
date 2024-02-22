@@ -63,7 +63,7 @@ export function Navbar({ cidade }: props) {
     };
     return (
         <>
-            <div className="main-navbar">
+            <div className="main-navbar select-none">
 
                 <div className="navbar">
 

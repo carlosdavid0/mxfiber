@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Logo from '../../../public/logo-blue.png'
 export function Footer() {
     return (
-        <footer className="bg-white">
+        <footer className="bg-white border-t">
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">

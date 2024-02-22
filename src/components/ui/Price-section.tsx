@@ -11,6 +11,8 @@ import 'react-multi-carousel/lib/styles.css';
 export function PriceSession({ planos }: { planos: Plano[]; }) {
 
 
+    if(planos.length === 0) return null
+
     return (
         <section className="bg-white">
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-10 lg:px-6">
