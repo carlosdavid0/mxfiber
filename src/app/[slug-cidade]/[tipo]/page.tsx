@@ -60,12 +60,14 @@ export async function generateMetadata(
         openGraph: {
             type: "website",
             title: `${data?.cidades[0].nome} | MXFiber`,
+            locale: "pt_BR",
             description: `MXFiber está em ${data?.cidades[0].nome} e veja os planos disponíveis para você!`,
             url: `${process.env.SITE_URL}/${data?.cidades[0].slug}`,
-            siteName: "MXFiber",
+            siteName: `${data?.cidades[0].nome} | MXFiber`,
+            alternateLocale: ['pt-BR', 'en-US'],
             images: [   
                 {
-                    url: "https://mxfiber.com.br/logo-blue.png",
+                    url: "https://mxfiber.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-blue.1035add7.png&w=750&q=75",
                     width: 800,
                     height: 600,
                     alt: "MXFiber",
