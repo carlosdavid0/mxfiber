@@ -22,6 +22,7 @@ export interface Sva {
 
 export interface SvaId {
   nome: string
+  destaque: boolean
   categoria_em_plano: string
   color_de_fundo: string
   icone: Icone

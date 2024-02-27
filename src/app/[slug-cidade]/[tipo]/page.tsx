@@ -14,6 +14,7 @@ import request, { gql } from "graphql-request";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { EntrerimentSection } from "@/components/ui/EntreterimentsSection";
+import { BlogSection } from "@/components/ui/BlogSection";
 
 
 
@@ -129,6 +130,7 @@ async function getPlanos({ slug, tipo }: { slug: string, tipo: string }) {
             }
             svas {
                 sva_id {
+                    destaque
                     nome
                     categoria_em_plano
                     color_de_fundo
@@ -286,7 +288,7 @@ export default async function ParaVoce({ params }: { params: { "slug-cidade": st
             <SvasSection svas={svas} planos={planos} />
             <TV data={tv} />
             <EntrerimentSection />
-            {/* <TalkPlace /> */}
+            <BlogSection />
             <Footer />
         </>
     )

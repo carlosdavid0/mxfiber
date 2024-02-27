@@ -91,6 +91,8 @@ body,
 
 img{
   user-select: none;
+  filter: drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff) drop-shadow(0 -1px 0 #fff) drop-shadow(0 1px 0 #fff);
+
 }
 
 

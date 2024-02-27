@@ -86,7 +86,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                     {planos.map((item, index) => (
                         <div key={item.id} className="mx-2">
                             {item.recomendado ? (
-                                <div key={index} className=" flex flex-col max-w-lg text-gray-900 $ rounded-xl select-none border-mx-blue-800 border px-4 py-4 bg-mx-blue-800 ">
+                                <div key={index} className=" flex flex-col max-w-lg text-gray-900 $ rounded-xl select-none  border px-4 py-4 bg-mx-blue-800 ">
                                     <header className="space-y-2 text-white">
                                         <p className="text-2xl flex flex-col -space-y-2">
                                             <span>
