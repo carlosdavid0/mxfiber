@@ -169,8 +169,11 @@ img.white-outline {
   align-items: center;
   justify-content: center;
   width: 100%;
+  @apply max-w-screen-xl;
+
+  @apply xl:text-xs;
   margin: auto;
-  @apply container;
+
 }
 
 
