@@ -1,13 +1,13 @@
 'use client'
 
-import Link from "next/link";
-import Logo from '../../../public/logo-blue.png'
+import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
-import { Bars3Icon, ChevronDownIcon, PhoneIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
+import Logo from '../../../public/logo-blue.png';
 
+import { inter } from "@/app/fonts";
 import { Cidade } from "@/types/cidades";
 import { useState } from "react";
-import { inter } from "@/app/fonts";
 // import { useEffect, useState } from "react";
 
 type props = {
@@ -67,8 +67,8 @@ export function Navbar({ cidade }: props) {
 
                 <div className="navbar">
 
-                    <div className={`navbar__bottom`}>
-                        <div className="container__bottom">
+                    <div className={`navbar__bottom text-lg md:text-md lg:text-xs xl:text-xs`}>
+                        <div className="container__bottom content-center max-w-screen-2xl">
                             <div className="navbar__bottom-left">
                                 <div className="bottom__left">
                                     <Link href={'/'}>

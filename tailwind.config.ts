@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: "jit",
@@ -11,9 +13,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        blinker: ["Blinker", "sans-serif"],
-      },
       colors: {
         'mx-blue': {
           '50': '#edf9ff',

@@ -1,17 +1,10 @@
 
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
-body,
-#root,
-.app {
-
-  font-family: 'Poppins';
-  @apply bg-gray-100 text-gray-500
-}
 
 
 
@@ -89,12 +82,11 @@ body,
   min-width: 0;
 }
 
-img{
+img.white-outline {
   user-select: none;
   filter: drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff) drop-shadow(0 -1px 0 #fff) drop-shadow(0 1px 0 #fff);
 
 }
-
 
 .navbar {
   margin: 0;
@@ -150,7 +142,7 @@ img{
 
 .navbar__top-right {
   text-transform: capitalize;
-  font-size: 14px;
+ 
   display: flex;
   color: #f0f1f2;
   flex-direction: row;
@@ -174,9 +166,11 @@ img{
 .container__bottom {
   padding: 0 10px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   margin: auto;
-  max-width: 1260px;
+  @apply container;
 }
 
 
@@ -186,7 +180,6 @@ img{
 .navbar__bottom-left {
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
   width: 100%;
   margin: auto;
 }
@@ -201,6 +194,8 @@ img{
 .bottom__left-options {
   display: flex;
   margin: auto;
+  align-items: center;
+  font-size: 10px;
   gap: 20px;
 }
 
@@ -294,6 +289,7 @@ img{
     @apply underline;
     @apply transition-all;
     @apply duration-500;
+
     text-decoration-thickness:  3px; /* Espessura do sublinhado em  2px */
     text-decoration-color: theme('colors.mx-green[500]'); ; 
   }
