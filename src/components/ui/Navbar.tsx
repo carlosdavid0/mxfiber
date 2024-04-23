@@ -68,8 +68,8 @@ export function Navbar({ cidade }: props) {
                 <div className="navbar">
 
                     <div className={`navbar__bottom text-lg md:text-md lg:text-xs xl:text-xs`}>
-                        <div className="container__bottom content-center max-w-screen-2xl">
-                            <div className="navbar__bottom-left">
+                        <div className="container__bottom">
+                            <div className="navbar__bottom-left justify-between xl:justify-center lg:justify-center md:justify-between 2xl:justify-center">
                                 <div className="bottom__left">
                                     <Link href={'/'}>
                                         <Image
@@ -83,7 +83,6 @@ export function Navbar({ cidade }: props) {
                                             <Link href={''} className="current">Para sua casa </Link>
                                             <Link href={''}>Para sua empresa</Link>
                                             <Link href={''}>Entretenimento</Link>
-                                            <Link href={''}>Indique um amigo</Link>
                                             <Link href={''}>Institucional</Link>
                                         </div>
                                         <div className=" bottom__right flex items-center gap-2">

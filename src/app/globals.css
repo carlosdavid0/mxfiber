@@ -164,15 +164,12 @@ img.white-outline {
 }
 
 .container__bottom {
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  @apply max-w-screen-xl;
-
-  @apply xl:text-xs;
-  margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    align-content: flex-start;
+    flex-wrap: nowrap;
 
 }
 
@@ -182,9 +179,10 @@ img.white-outline {
 
 .navbar__bottom-left {
   display: flex;
-  justify-content: space-between;
   width: 100%;
   margin: auto;
+  align-content: flex-start;
+  flex-wrap: nowrap;
 }
 
 .bottom__left {

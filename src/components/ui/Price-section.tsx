@@ -97,10 +97,10 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                                             </span>
                                         </p>
                                         <h2 className="text-4xl space-x-1 text-mx-green-400">
-                                            <span className="font-semibold">
+                                            <span className="font-bold">
                                                 {item.nome.split(' ')[0]}
                                             </span>
-                                            <span className="font-medium">
+                                            <span className="font-bold">
                                                 {item.nome.split(' ')[1].toUpperCase()}
                                             </span>
                                         </h2>
@@ -112,7 +112,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                                                 <li key={index} className="flex items-center space-x-2">
                                                     <div dangerouslySetInnerHTML={{ __html: servico.servicos_id.icone_personalizado }} />
 
-                                                    <span className="text-white font-light">
+                                                    <span className="text-white font-semibold">
                                                         {servico.servicos_id.nome}
                                                     </span>
                                                 </li>
@@ -158,7 +158,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                                             <span className="font-semibold">
                                                 {item.nome.split(' ')[0]}
                                             </span>
-                                            <span className="font-medium">
+                                            <span className="font-semibold">
                                                 {item.nome.split(' ')[1].toUpperCase()}
                                             </span>
                                         </h2>
@@ -169,7 +169,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                                             {item.servicos.map((servico, index) => (
                                                 <li key={index} className="flex items-center space-x-2">
                                                     <div dangerouslySetInnerHTML={{ __html: servico.servicos_id.icone_personalizado }} />
-                                                    <span className="text-mx-blue-800">
+                                                    <span className="text-mx-blue-800 font-semibold">
                                                         {servico.servicos_id.nome}
                                                     </span>
                                                 </li>
@@ -179,7 +179,6 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                                         <section className="space-y-2 mt-6">
                                             <button
                                                 className="flex items-center justify-center w-full  text-white bg-mx-blue-900 hover:bg-mx-blue-800 rounded-full h-14"
-
                                             >
 
                                                 <span className="ml-2">

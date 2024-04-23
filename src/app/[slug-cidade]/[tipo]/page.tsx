@@ -1,10 +1,10 @@
 import { EmblaCarousel } from "@/components/ui/CarroselHome";
-import { TV } from "@/components/ui/Tv";
-import { SvasSection } from "@/components/ui/SvasSection";
+import { EntrerimentSection } from "@/components/ui/EntreterimentsSection";
 import { Footer } from "@/components/ui/Footer";
 import { Navbar } from "@/components/ui/Navbar";
 import { PriceSession } from "@/components/ui/Price-section";
-import { TalkPlace } from "@/components/ui/TalkPlace";
+import { SvasSection } from "@/components/ui/SvasSection";
+import { TV } from "@/components/ui/Tv";
 import { Svas } from "@/types/Sva";
 import { Tvinfo } from "@/types/Tv";
 import { Banner } from "@/types/banners";
@@ -13,8 +13,6 @@ import { Plano } from "@/types/planos";
 import request, { gql } from "graphql-request";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import { EntrerimentSection } from "@/components/ui/EntreterimentsSection";
-import { BlogSection } from "@/components/ui/BlogSection";
 
 
 
@@ -288,7 +286,7 @@ export default async function ParaVoce({ params }: { params: { "slug-cidade": st
             <SvasSection svas={svas} planos={planos} />
             <TV data={tv} />
             <EntrerimentSection />
-            <BlogSection />
+           
             <Footer />
         </>
     )
