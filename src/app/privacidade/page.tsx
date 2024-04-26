@@ -32,7 +32,7 @@ export const metadata = {
 }
 
 
-export async function getConfig() {
+async function getConfig() {
     const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
     const query = gql`
     query {
