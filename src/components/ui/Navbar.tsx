@@ -76,11 +76,13 @@ export function Navbar({ cidade }: props) {
                                             src={Logo}
                                             alt=""
                                             className="w-20 cursor-pointer transition-all duration-200 hover:scale-110"
-                                        ></Image>
+                                        />
+                                        
+                                       
                                     </Link>
                                     <div className="flex items-center gap-10 ml-5">
                                         <div className="bottom__left-options">
-                                            <Link href={''} className="current">Para sua casa </Link>
+                                            <Link href={''}>Para sua casa </Link>
                                             <Link href={''}>Para sua empresa</Link>
                                             <Link href={''}>Entretenimento</Link>
                                             <Link href={''}>Institucional</Link>

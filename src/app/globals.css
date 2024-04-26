@@ -344,3 +344,40 @@ body > section.bg-white > div > div.react-multi-carousel-list.container-with-dot
 
 
 
+
+
+.elementor-widget-container{
+  margin: 0;
+  padding: 0;
+
+
+}
+
+.elementor-widget-container h1, h2, h3, h4, h5, h6{
+  font-family: 'Roboto', sans-serif;
+}
+
+.elementor-widget-container h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.elementor-widget-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.elementor-widget-container h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.elementor-widget-container h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+ 
+.elementor-widget-container p {
+  font-size: 1rem;
+  font-weight: 400;
+}

@@ -2,8 +2,11 @@
 
 import { Plano } from "@/types/planos";
 import { PlusIcon, } from "@heroicons/react/20/solid";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
+import { ModalBeneficios } from "./ModalBeneficios";
 
 
 
@@ -11,7 +14,20 @@ import 'react-multi-carousel/lib/styles.css';
 export function PriceSession({ planos }: { planos: Plano[]; }) {
 
 
-    if(planos.length === 0) return null
+    const searchParams = useSearchParams()
+    const router = useRouter();
+
+
+    const [planoSelecionado, setPlanoSelecionado] = useState<Plano | null>(null)
+
+
+
+
+
+
+    if (planos.length === 0) return null
+
+
 
     return (
         <section className="bg-white">
@@ -44,7 +60,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                     renderArrowsWhenDisabled={false}
                     renderButtonGroupOutside={false}
                     renderDotsOutside={false}
-                    
+
                     responsive={{
                         desktop: {
                             breakpoint: {
@@ -86,7 +102,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                     {planos.map((item, index) => (
                         <div key={item.id} className="mx-2 ">
                             {item.recomendado ? (
-                                <div key={index} className=" flex flex-col max-w-sm text-gray-900 rounded-xl select-none  border px-4 py-4 bg-mx-blue-800 ">
+                                <div id={item.id} key={index} className=" flex flex-col max-w-sm text-gray-900 rounded-xl select-none  border px-4 py-4 bg-mx-blue-800 ">
                                     <header className="space-y-2 text-white">
                                         <p className="text-2xl flex flex-col -space-y-2">
                                             <span>
@@ -121,7 +137,7 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
 
                                         <section className="space-y-2 mt-6">
                                             <button
-                                                className="flex items-center justify-center w-full  text-mx-blue-600 font-semibold bg-white hover:text-mx-blue-700 rounded-full h-14"
+                                                className="flex items-center justify-center w-full  text-mx-blue-600 font-semibold bg-white hover:text-mx-blue-700 rounded-full h-14 hover:bg-gray-50"
 
                                             >
 
@@ -129,15 +145,20 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                                                     Assinar Agora
                                                 </span>
                                             </button>
-                                            <button
-                                                className="flex items-center justify-center w-full  text-mx-blue-600 font-semibold bg-mx-green-400 hover:bg-mx-green-700 rounded-full h-14"
+                                            {item.svas.length >= 1 && (
+                                                <button
+                                                    onClick={() => {
+                                                        setPlanoSelecionado(item)
+                                                    }}
+                                                    className="flex items-center justify-center w-full  text-mx-blue-600 font-semibold bg-mx-green-400 hover:bg-mx-green-300 rounded-full h-14"
 
-                                            >
+                                                >
 
-                                                <span className="ml-2">
-                                                    + Aplicativos
-                                                </span>
-                                            </button>
+                                                    <span className="ml-2">
+                                                        + Aplicativos
+                                                    </span>
+                                                </button>
+                                            )}
                                             <button
                                                 className="mx-5 pt-2 text-md flex items-center text-start leading-4 text-mx-blue-800 gap-2"
 
@@ -179,21 +200,27 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
                                         <section className="space-y-2 mt-6">
                                             <button
                                                 className="flex items-center justify-center w-full  text-white bg-mx-blue-900 hover:bg-mx-blue-800 rounded-full h-14"
+
                                             >
 
                                                 <span className="ml-2">
                                                     Assinar Agora
                                                 </span>
                                             </button>
-                                            <button
-                                                className="flex items-center justify-center w-full  text-mx-blue-600 font-semibold bg-mx-green-400 hover:bg-mx-green-700 rounded-full h-14"
+                                            {item.svas.length >= 1 && (
+                                                <button
+                                                    onClick={() => {
+                                                        setPlanoSelecionado(item)
+                                                    }}
+                                                    className="flex items-center justify-center w-full  text-mx-blue-600 font-semibold bg-mx-green-400 hover:bg-mx-green-300  rounded-full h-14"
 
-                                            >
+                                                >
 
-                                                <span className="ml-2">
-                                                    + Aplicativos
-                                                </span>
-                                            </button>
+                                                    <span className="ml-2">
+                                                        + Aplicativos
+                                                    </span>
+                                                </button>
+                                            )}
                                             <button
                                                 className="mx-5 pt-2 text-md flex items-center text-start leading-4 text-mx-blue-800 gap-2"
 
@@ -215,6 +242,9 @@ export function PriceSession({ planos }: { planos: Plano[]; }) {
 
             </div>
 
+            <ModalBeneficios plano={planoSelecionado} onClose={() => {
+                setPlanoSelecionado(null)
+            }} />
 
         </section>
     )

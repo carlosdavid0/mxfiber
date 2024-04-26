@@ -14,9 +14,6 @@ import request, { gql } from "graphql-request";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
-
-
-
 export async function generateMetadata(
     { params }: any,
     parent: ResolvingMetadata
@@ -79,7 +76,6 @@ export async function generateMetadata(
 
 
 }
-
 async function getCityData(slug: string) {
 
     const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
@@ -105,7 +101,6 @@ async function getCityData(slug: string) {
     }
 
 }
-
 async function getPlanos({ slug, tipo }: { slug: string, tipo: string }) {
     const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
     const query = gql`query {
@@ -187,8 +182,6 @@ async function getCarroselData(slug: string) {
 
 
 }
-
-
 async function getTvInfo(slug: string) {
     const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
     const query = gql`
@@ -230,7 +223,6 @@ async function getTvInfo(slug: string) {
 
 
 }
-
 async function getSVAs(slug: string) {
     const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
     const query = gql`

@@ -20,17 +20,7 @@ export function TV({ data }: { data: Tvinfo }) {
                     </div>
 
 
-
-
-
-
                     <div className="flex gap-4">
-                        <button className="lg:w-fit w-full px-5 bg-white rounded-full text-md h-14  transform transition-transform duration-500 ease-in-out ">
-                            <div className="flex items-center justify-center gap-2 hover:scale-105 transition-all duration-200">
-
-                                <span className="text-xl text-mx-blue-800">Canais Disponiveis</span>
-                            </div>
-                        </button>
                         <button style={{ background: data.cor_base }} className={`lg:w-fit w-full rounded-full text-md h-14  px-4 transform transition-transform duration-500 ease-in-out`}>
                             <div className="flex items-center justify-center gap-2 hover:scale-105 transition-all duration-200">
 

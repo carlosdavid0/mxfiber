@@ -1,9 +1,8 @@
 import { Plano } from '@/types/planos'
 import { Dialog, Transition } from '@headlessui/react'
-import { CheckBadgeIcon, RocketLaunchIcon, HeartIcon } from '@heroicons/react/20/solid'
 import { Fragment, useEffect, useState } from 'react'
 
-export function ModalBeneficios({ plano, onClose }: { plano: Plano | undefined, onClose: () => void }) {
+export function ModalBeneficios({ plano, onClose }: { plano: Plano | null, onClose: () => void }) {
     let [isOpen, setIsOpen] = useState(false)
 
     function closeModal() {
@@ -76,24 +75,9 @@ export function ModalBeneficios({ plano, onClose }: { plano: Plano | undefined, 
                                         </div>
                                     </Dialog.Title>
                                     <div className='space-y-4'>
-                                        <div className='px-5 py-4 space-y-2'>
-                                            <h3 className="lg:text-xl text-blue-800">
-                                                Serviços
-                                            </h3>
-
-                                            <ul className="grid grid-cols-2 gap-3">
-                                                {plano?.servicos.map((servico, index) => (
-                                                    <li className="flex items-center space-x-3" key={index}>
-                                                        <CheckBadgeIcon className="w-4 text-mx-blue-800" />
-                                                        <span>{servico.servicos_id.nome}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
                                         {plano?.svas && plano.svas.length >= 1 && (
                                             <div>
-                                                <div className={` px-5  rounded-lg  items-center gap-2 flex `}>
+                                                <div className={` px-5  rounded-lg  items-center gap-2 flex  pt-5`}>
 
                                                     <h3 className="lg:text-xl text-blue-800">
                                                         Apps inclusos
@@ -114,6 +98,8 @@ export function ModalBeneficios({ plano, onClose }: { plano: Plano | undefined, 
 
 
                                         )}
+
+
 
                                         <div>
 
