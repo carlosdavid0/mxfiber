@@ -27,7 +27,8 @@ export default function RootLayout({
     <html lang="pt-br">
       <Head>
         <meta name="adopt-website-id" content="0a8a3e95-6723-4736-9515-479b6972bb36" />
-        <Script src="//tag.goadopt.io/injector.js?website_code=0a8a3e95-6723-4736-9515-479b6972bb36" className="adopt-injector"></Script>      </Head>
+        <Script src="//tag.goadopt.io/injector.js?website_code=0a8a3e95-6723-4736-9515-479b6972bb36" className="adopt-injector"></Script>
+      </Head>
       <body className={inter.className}>
         <EmpresaProvider>
           {children}
