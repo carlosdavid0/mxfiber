@@ -22,8 +22,7 @@ export const metadata: Metadata = {
         alternateLocale: ['pt-BR', 'en-US'],
         images: [
             {
-                url: "https://mxfiber.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-blue.1035add7.png&w=750&q=75",
-                width: 800,
+                url: `${process.env.NEXT_PUBLIC_SITE_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-blue.1035add7.png&w=750&q=75`,                width: 800,
                 height: 600,
                 alt: "MXFiber",
             },
