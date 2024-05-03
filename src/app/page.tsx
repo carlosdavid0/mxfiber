@@ -8,6 +8,7 @@ import Logo from '../../public/logo.png';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
+    metadataBase: new URL('https://mxfibra.com/'),
     title: `MXFiber`,
     description: `MXFiber : veja os planos disponíveis para você!`,
     keywords: `MXFiber, Planos, Internet, Fibra Óptica`,
@@ -16,11 +17,12 @@ export async function generateMetadata(): Promise<Metadata> {
     category: "Internet",
     publisher: "MXFiber",
     openGraph: {
+
       type: "website",
       title: ` MXFiber`,
       locale: "pt_BR",
       description: `MXFiber veja os planos disponíveis para você!`,
-      url: `${process.env.SITE_URL}`,
+      url: new URL(`https://mxfibra.com/`),
       siteName: ` MXFiber`,
       alternateLocale: ['pt-BR', 'en-US'],
       images: [

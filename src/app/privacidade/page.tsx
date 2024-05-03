@@ -3,9 +3,10 @@ import { Navbar } from "@/components/ui/Navbar";
 import { Cidade } from "@/types/cidades";
 import { Configuracoes } from "@/types/config";
 import request, { gql } from "graphql-request";
+import { Metadata } from "next";
 
 
-export const metadata = {
+export const metadata: Metadata = {
     title: `Privacidade | MXFibra`,
     description: `Privacidade`,
     robots: "index, follow",
@@ -17,7 +18,6 @@ export const metadata = {
         title: `Privacidade`,
         locale: "pt_BR",
         description: `Privacidade`,
-        url: `${process.env.SITE_URL}`,
         siteName: `Privacidade`,
         alternateLocale: ['pt-BR', 'en-US'],
         images: [
@@ -33,19 +33,27 @@ export const metadata = {
 
 
 async function getConfig() {
-    const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
-    const query = gql`
+    try {
+        const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
+        const query = gql`
     query {
         configuracoes{
-          lgpd,
-          
+          lgpd
+
         }
     }`;
 
-    const { configuracoes }: { configuracoes: Configuracoes } = await request(endpoint, query);
+        const { configuracoes }: { configuracoes: Configuracoes } = await request(endpoint, query);
 
-    return {
-        configuracoes: configuracoes
+        return {
+            configuracoes: configuracoes
+        }
+    } catch (e) {
+        return {
+            configuracoes: {
+                lgpd: ''
+            }
+        }
     }
 }
 

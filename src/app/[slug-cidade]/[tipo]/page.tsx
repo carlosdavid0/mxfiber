@@ -58,7 +58,7 @@ export async function generateMetadata(
             title: `${data?.cidades[0].nome} | MXFiber`,
             locale: "pt_BR",
             description: `MXFiber está em ${data?.cidades[0].nome} e veja os planos disponíveis para você!`,
-            url: `${process.env.SITE_URL}/${data?.cidades[0].slug}`,
+            url: `https://mxfibra.com.br/${data?.cidades[0].slug}`,
             siteName: `${data?.cidades[0].nome} | MXFiber`,
             alternateLocale: ['pt-BR', 'en-US'],
             images: [   
