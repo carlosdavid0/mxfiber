@@ -6,10 +6,6 @@ import Link from "next/link";
 import { useState } from "react";
 
 
-
-
-
-
 export function ListCitiesHome({ data }: { data: { cidades: Cidade[] } }) {
 
     const [filteredCities, setFilteredCities] = useState(data.cidades)

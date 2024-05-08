@@ -1,3 +1,4 @@
+'use server'
 import { ListCitiesHome } from "@/components/ui/ListCitiesHome";
 import { getCities } from "@/services/getCities";
 import { Metadata } from "next";
