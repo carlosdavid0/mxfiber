@@ -1,52 +1,66 @@
-'use server'
+'use client'
 import { ListCitiesHome } from "@/components/ui/ListCitiesHome";
 import { getCities } from "@/services/getCities";
-import { Metadata } from "next";
+import { Cidade } from "@/types/cidades";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import Logo from '../../public/logo.png';
 
 
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    metadataBase: new URL('https://mxfibra.com/'),
-    title: `MXFiber`,
-    description: `MXFiber : veja os planos disponíveis para você!`,
-    keywords: `MXFiber, Planos, Internet, Fibra Óptica`,
-    robots: "index, follow",
-    generator: "MXFiber",
-    category: "Internet",
-    publisher: "MXFiber",
-    openGraph: {
+// export async function generateMetadata(): Promise<Metadata> {
+//   return {
+//     metadataBase: new URL('https://mxfibra.com/'),
+//     title: `MXFiber`,
+//     description: `MXFiber : veja os planos disponíveis para você!`,
+//     keywords: `MXFiber, Planos, Internet, Fibra Óptica`,
+//     robots: "index, follow",
+//     generator: "MXFiber",
+//     category: "Internet",
+//     publisher: "MXFiber",
+//     openGraph: {
 
-      type: "website",
-      title: ` MXFiber`,
-      locale: "pt_BR",
-      description: `MXFiber veja os planos disponíveis para você!`,
-      url: new URL(`https://mxfibra.com/`),
-      siteName: ` MXFiber`,
-      alternateLocale: ['pt-BR', 'en-US'],
-      images: [
-        {
-          url: `${process.env.NEXT_PUBLIC_SITE_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-blue.1035add7.png&w=750&q=75`,
-          width: 800,
-          height: 600,
-          alt: "MXFiber",
-        },
-      ],
-    },
+//       type: "website",
+//       title: ` MXFiber`,
+//       locale: "pt_BR",
+//       description: `MXFiber veja os planos disponíveis para você!`,
+//       url: new URL(`https://mxfibra.com/`),
+//       siteName: ` MXFiber`,
+//       alternateLocale: ['pt-BR', 'en-US'],
+//       images: [
+//         {
+//           url: `${process.env.NEXT_PUBLIC_SITE_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-blue.1035add7.png&w=750&q=75`,
+//           width: 800,
+//           height: 600,
+//           alt: "MXFiber",
+//         },
+//       ],
+//     },
 
+
+//   }
+
+
+// }
+
+
+
+export default function Home() {
+
+  const [cities, setCities] = useState<Cidade[]>([])
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+
+  async function fetchData() {
+    const cities= await getCities()
+    setCities(cities.cidades)
 
   }
 
 
-}
-
-
-
-export default async function Home() {
-
-  const data = await getCities();
 
   return (
     <main className="bg-mx-blue-800 min-h-screen ">
@@ -55,7 +69,9 @@ export default async function Home() {
         <Image src={Logo} alt="MXFiber" className='w-32' />
         <section>
 
-          <ListCitiesHome data={data} />
+          <ListCitiesHome data={{
+            cidades: cities
+          }} />
         </section>
       </div>
     </main>

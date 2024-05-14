@@ -3,7 +3,7 @@
 import { Cidade } from "@/types/cidades";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export function ListCitiesHome({ data }: { data: { cidades: Cidade[] } }) {
@@ -11,6 +11,7 @@ export function ListCitiesHome({ data }: { data: { cidades: Cidade[] } }) {
     const [filteredCities, setFilteredCities] = useState(data.cidades)
     const [citieSelected, setCitieSelected] = useState<Cidade | null>(null)
 
+        
 
     const filterCities = (value: string) => {
         const filtered = data.cidades.filter(city => city.nome.toLowerCase().includes(value.toLowerCase()))
@@ -21,6 +22,12 @@ export function ListCitiesHome({ data }: { data: { cidades: Cidade[] } }) {
             setFilteredCities(data.cidades)
         }
     }
+
+   useEffect(() => {
+        setFilteredCities(data.cidades)
+    },[data.cidades])
+    
+    
 
 
 
