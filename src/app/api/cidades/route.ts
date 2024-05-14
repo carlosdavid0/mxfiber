@@ -1,4 +1,15 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+
+export const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  };
+  
+  
+  export async function OPTIONS(req: NextRequest) {
+    return NextResponse.json({}, { headers: corsHeaders });
+  }
 
 export async function GET() {
     const cidades = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/items/cidades?fields[]=nome&fields[]=estado.nome&fields[]=estado.Sigla&fields[]=slug&fields[]=status&fields[]=id&sort[]=id&filter[status][_eq]=published`, {
@@ -11,5 +22,5 @@ export async function GET() {
             return [];
         });
 
-    return NextResponse.json(cidades);
+    return NextResponse.json(cidades, { headers: corsHeaders });
 }
