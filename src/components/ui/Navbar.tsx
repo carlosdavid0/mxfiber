@@ -79,11 +79,8 @@ const MobileMenu = ({
 export function Navbar({ cidade }: props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { empresa } = useEmpresa();
-  const [location, setLocation] = useState("/");
+  const [location, setLocation] = useState("dsadasdkjahsdjkhasjkdhajkshdjk");
 
-  useEffect(() => {
-    setLocation(window.location.pathname);
-  }, [window.location]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
