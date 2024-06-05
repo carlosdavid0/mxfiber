@@ -26,10 +26,13 @@ const MobileMenu = ({
 
   const [location, setLocation] = useState("/");
 
+
   useEffect(() => {
     setLocation(window.location.pathname);
   }, [window.location.pathname]);
 
+  console.log(window.location.pathname);
+  
 
   return (
     <div
@@ -80,7 +83,7 @@ export function Navbar({ cidade }: props) {
 
   useEffect(() => {
     setLocation(window.location.pathname);
-  }, [window.location.pathname]);
+  }, [window.location]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

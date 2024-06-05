@@ -1,48 +1,11 @@
-"use client";
+"use client"
 import { ListCitiesHome } from "@/components/ui/ListCitiesHome";
 import { getCities } from "@/services/getCities";
 import { Cidade } from "@/types/cidades";
-import { Metadata } from "next";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Logo from "../../public/logo.png";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    metadataBase: new URL("https://mxfibra.com/"),
-    title: `MXFiber`,
-    description: `MXFiber : veja os planos disponíveis para você!`,
-    keywords: `MXFiber, Planos, Internet, Fibra Óptica`,
-    robots: "index, follow",
-    generator: "MXFiber",
-    category: "Internet",
-    publisher: "MXFiber",
-    openGraph: {
-      type: "website",
-      title: ` MXFiber`,
-      locale: "pt_BR",
-      description: `MXFiber veja os planos disponíveis para você!`,
-      url: new URL(`https://mxfibra.com/`),
-      siteName: ` MXFiber`,
-      alternateLocale: ["pt-BR", "en-US"],
-      images: [
-        {
-          url: `${process.env.NEXT_PUBLIC_SITE_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-blue.1035add7.png&w=750&q=75`,
-          width: 800,
-          height: 600,
-          alt: "MXFiber",
-        },
-      ],
-    },
-  };
-}
-
-export async function generateStaticParams() {
-  const cities = await getCities();
-  return cities.cidades.map((cidade) => ({
-    id: cidade.slug,
-  }));
-}
 
 
 
