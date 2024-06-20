@@ -1,5 +1,5 @@
-import { EmblaCarousel } from "@/components/ui/CarroselHome";
-import { EntrerimentSection } from "@/components/ui/EntreterimentsSection";
+ import { EmblaCarousel } from "@/components/ui/CarroselHome";
+import { EntretenimentSection } from "@/components/ui/EntreterimentsSection";
 import { Footer } from "@/components/ui/Footer";
 import { Navbar } from "@/components/ui/Navbar";
 import { PriceSession } from "@/components/ui/Price-section";
@@ -277,7 +277,7 @@ export default async function ParaVoce({ params }: { params: { "slug-cidade": st
             <PriceSession planos={planos} />
             <SvasSection svas={svas} planos={planos} />
             <TV data={tv} />
-            <EntrerimentSection />
+            <EntretenimentSection />
            
             <Footer />
         </>
