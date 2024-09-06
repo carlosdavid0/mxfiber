@@ -1,101 +1,60 @@
-import Image from "next/image";
+import { Metadata } from "next";
+import Link from "next/link";
 
-export default function Home() {
+import { cn } from "@/lib/utils";
+import { ScrollArea } from "./components/ui/scroll-area";
+import { ChevronRightIcon, MapPinIcon } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "MX Fibra",
+  description: "",
+};
+
+export default function AuthenticationPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="bg-blue-500 h-screen ">
+      <section className="lg:mx-auto max-w-screen-md mx-10">
+        <header className="w-full py-10 flex flex-col gap-10 items-start">
+          <img
+            src="https://www.mxfibra.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.c61d9a9b.png&w=750&q=75"
+            alt="Logo MX"
+            className="h-20 w-auto"
+          />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+          <input
+            type="text"
+            placeholder="Escolha sua cidade"
+            className={cn(
+              "w-full px-0 py-2 pr-10 border-b bg-transparent text-white ring-0 outline-none focus:border-green-400 transition-all placeholder:text-white/60"
+            )}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        </header>
+        <ScrollArea
+          className="container lg:mx-auto lg:max-h-[600px] max-h-[500px] 
+        
+          overflow-y-auto"
+          id="scroll-cities"
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          {Array.from({ length: 30 }).map((_, index) => (
+            <Link key={index} href="#" prefetch={false}>
+              <div
+                className={cn(
+                  "flex items-center justify-between  py-3  border-white/10 transition-all my-2 hover:bg-blue-300 hover:border-white/20 rounded-md px-2 hover:shadow-md",
+                  index === 0 ? "border-0" : ""
+                )}
+              >
+                <div className="flex items-center gap-3">
+                  <MapPinIcon size={24} className="text-white/60" />
+                  <span className="text-white text-xl font-medium">
+                    City Name
+                  </span>
+                </div>
+                <ChevronRightIcon size={24} />
+              </div>
+            </Link>
+          ))}
+        </ScrollArea>
+      </section>
     </div>
   );
 }
