@@ -36,7 +36,7 @@ export default function AuthenticationPage() {
           id="scroll-cities"
         >
           {Array.from({ length: 30 }).map((_, index) => (
-            <Link key={index} href="#" prefetch={false}>
+            <Link key={index} href="/cidade/cidade" prefetch={false}>
               <div
                 className={cn(
                   "flex items-center justify-between  py-3  border-white/10 transition-all my-2 hover:bg-blue-300 hover:border-white/20 rounded-md px-2 hover:shadow-md",

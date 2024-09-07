@@ -6,7 +6,7 @@ import {
   NavigationMenuList,
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
-import { MenuIcon } from "lucide-react";
+import { ChevronDown, MenuIcon } from "lucide-react";
 
 export default function Navbar() {
   return (
@@ -72,7 +72,7 @@ export default function Navbar() {
                 <NavigationMenuLink key={index} asChild>
                   <Link
                     href="#"
-                    className="group inline-flex items-center px-4 py-2 text-md font-bold rounded-md transition-colors bg-white text-blue-500 hover:bg-blue-100 hover:text-blue-600 focus:bg-blue-100 focus:text-blue-600"
+                    className="group inline-flex items-center px-4 py-2 text-md font-medium rounded-md transition-colors bg-white text-blue-500 hover:bg-blue-100 hover:text-blue-600 focus:bg-blue-100 focus:text-blue-600"
                     prefetch={false}
                   >
                     {item}
@@ -84,9 +84,12 @@ export default function Navbar() {
         </NavigationMenu>
         <div className="items-center space-x-4 ml-auto hidden lg:flex">
           <Button variant="default">Contact Us</Button>
-          <span>
-            MX Fibra em <strong>Fortaleza</strong>
-          </span>
+          <Link href="/" prefetch={false} className="flex items-center gap-2">
+            <span className="text-blue-500">
+              MX Fibra em <strong>Fortaleza</strong>
+            </span>
+            <ChevronDown className="h-6 w-6 text-blue-500" />
+          </Link>
         </div>
       </header>
     </section>
