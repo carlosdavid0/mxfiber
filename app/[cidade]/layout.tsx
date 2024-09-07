@@ -1,8 +1,15 @@
+import Navbar from "@/components/navbar";
+
 type LayoutCidadesProps = {
   children: React.ReactNode;
 };
 function LayoutCidades({ children }: LayoutCidadesProps) {
-  return <>{children}</>;
+  return (
+    <main className="bg-gray-100 min-h-screen max-h-full">
+      <Navbar />
+      <section className="px-4 py-6">{children}</section>
+    </main>
+  );
 }
 
 export default LayoutCidades;
