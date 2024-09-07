@@ -1,5 +1,11 @@
+import { CarouselSize } from "@/components/planos/carrousell-planos";
+
 function Type() {
-  return <h1 className="text-blue-500">Olá</h1>;
+  return (
+    <div className="container mx-auto">
+      <CarouselSize />
+    </div>
+  );
 }
 
 export default Type;

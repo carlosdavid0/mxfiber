@@ -29,10 +29,13 @@ type HeroCarrouselProps = {
 
 export function HeroCarrousel({ hiddenOnMobile = true }: HeroCarrouselProps) {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: false })
+    Autoplay({ delay: 5000, stopOnInteraction: false })
   );
   return (
     <Carousel
+      opts={{
+        loop: true,
+      }}
       className="w-full shadow-xl"
       plugins={[plugin.current]}
       onMouseEnter={plugin.current.stop}
