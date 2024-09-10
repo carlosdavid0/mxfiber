@@ -6,10 +6,11 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { CardOtts, Service } from "./cardOtts";
+import { CardOtts } from "./cardOtts";
+import { Sva } from "@/types/planos";
 
 type CarouselPlanosProps = {
-  data: Service[];
+  data: Sva[];
 };
 
 export function CarouselDestaquesOTT({ data }: CarouselPlanosProps) {

@@ -25,9 +25,6 @@ export function HeroSky() {
                 exclusivos DSPORTS. São mais de 90 jogos!
               </p>
               <div className="flex gap-4">
-                <Button variant="outline" className="h-16 bg-white rounded-xl ">
-                  Canais disponíveis
-                </Button>
                 <Button
                   variant="destructive"
                   className="h-16 w-full lg:min-w-[70%] rounded-xl transition-all"

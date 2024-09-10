@@ -1,66 +1,56 @@
+"use client";
 import { Play, Gamepad2, Music, Tv } from "lucide-react";
 import { CarouselDestaquesOTT } from "./carrousell";
 import { cn } from "@/lib/utils";
+import { Sva } from "@/types/planos";
 
-const services = [
-  {
-    name: "Netflix",
-    image: "https://via.placeholder.com/300",
-    description:
-      "Watch TV shows and movies recommended just for you, including award-winning Netflix original series, movies, and documentaries.",
-    color: "text-red-500",
-  },
-  {
-    name: "Amazon Prime Video",
-    image: "https://via.placeholder.com/300",
-    description:
-      "Watch movies and TV shows recommended for you, including Amazon Original series, movies, and documentaries.",
-    color: "text-blue-500",
-  },
-  {
-    name: "Disney+",
-    image: "https://via.placeholder.com/400",
-    description:
-      "Watch Disney, Pixar, Marvel, Star Wars, and National Geographic movies, TV shows, and documentaries.",
-    color: "text-yellow-500",
-  },
-  {
-    name: "HBO Max",
-    image: "https://via.placeholder.com/300",
-    description:
-      "Watch the best movies, TV shows, and documentaries from HBO, Warner Bros., DC, and more.",
-    color: "text-purple-500",
-  },
-  {
-    name: "Paramount+",
-    image: "https://via.placeholder.com/300",
-    description:
-      "Watch the best movies, TV shows, and documentaries from Paramount Pictures, CBS, and more.",
-    color: "text-blue-500",
-  },
-  {
-    name: "Apple TV+",
-    image: "https://via.placeholder.com/300",
-    description:
-      "Watch movies and TV shows recommended for you, including Apple Original series, movies, and documentaries.",
-    color: "text-blue-500",
-  },
-  {
-    name: "Hulu",
-    image: "https://via.placeholder.com/300",
-    description:
-      "Watch movies and TV shows recommended for you, including Hulu Original series, movies, and documentaries.",
-    color: "text-green-500",
-  },
-];
+type Props = {
+  planos: Plano[];
+};
 
-export default function Component() {
+type Plano = {
+  svas: Sva[];
+};
+
+function processarSvas(planos: Plano[]): Sva[] {
+  const svas: Sva[] = [];
+
+  planos.forEach((plano) => {
+    plano.svas.forEach((sva) => {
+      // Remove duplicados
+      if (!svas.some((s) => s.sva_id.nome === sva.sva_id.nome)) {
+        svas.push(sva);
+      }
+    });
+  });
+
+  // Ordena os SVAs
+  const sortedSvas = svas.sort((a, b) => {
+    // Primeiro, compara o status de destaque
+    if (a.sva_id.destaque && !b.sva_id.destaque) return -1;
+    if (!a.sva_id.destaque && b.sva_id.destaque) return 1;
+
+    // Se os statuses forem iguais, compara o nome
+    if (a.sva_id.nome < b.sva_id.nome) return -1;
+    if (a.sva_id.nome > b.sva_id.nome) return 1;
+
+    // Se os statuses e nomes forem iguais, retorna 0
+    return 0;
+  });
+
+  return sortedSvas;
+}
+export default function Component({ planos }: Props) {
+  const svas = processarSvas(planos);
+
+  console.log(svas);
+
   return (
     <section
       className={cn(
-        "max-w-screen-xl mx-auto grid",
+        "max-w-screen-xl mx-auto grid items-end ",
         "grid-cols-1 lg:grid-cols-3",
-        "lg:py-4"
+        "lg:py-10"
       )}
     >
       <div className="space-y-6 px-4 lg:max-w-sm py-5 lg:py-0">
@@ -81,7 +71,7 @@ export default function Component() {
       </div>
 
       <div className="px-4 col-span-2">
-        <CarouselDestaquesOTT data={services} />
+        <CarouselDestaquesOTT data={svas} />
       </div>
     </section>
   );

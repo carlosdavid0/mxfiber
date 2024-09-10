@@ -10,8 +10,15 @@ import {
 } from "@/components/ui/carousel";
 import CardPlanos from "./card-planos";
 import { cn } from "@/lib/utils";
+import { Plano } from "@/types/planos";
+import { Empresa } from "@/types/empresa";
 
-export function CarouselPlanos() {
+type planosCarrousel = {
+  data: Plano[];
+  empresa: Empresa;
+};
+
+export function CarouselPlanos({ data, empresa }: planosCarrousel) {
   return (
     <Carousel
       opts={{
@@ -21,12 +28,16 @@ export function CarouselPlanos() {
       className="relative w-full md:px-4 lg:px-6 xl:px-8"
     >
       <CarouselContent>
-        {Array.from({ length: 10 }).map((_, index) => (
+        {data.map((item, index) => (
           <CarouselItem
             key={index}
             className="basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
           >
-            <CardPlanos variant={index % 2 === 0 ? "primary" : "secondary"} />
+            <CardPlanos
+              empresa={empresa}
+              data={item}
+              variant={item.recomendado ? "primary" : "secondary"}
+            />
           </CarouselItem>
         ))}
       </CarouselContent>

@@ -1,3 +1,5 @@
+import { Sva } from "@/types/planos";
+import { images } from "@/utils/images";
 import { MessageCircle } from "lucide-react";
 
 export type Service = {
@@ -8,27 +10,34 @@ export type Service = {
 };
 
 export type ottData = {
-  data: Service;
+  data: Sva;
 };
 
 export function CardOtts({ data }: ottData) {
   return (
     <div
-      key={data.name}
+      key={data.sva_id.nome}
       className="flex flex-col rounded-lg overflow-hidden shadow-lg "
     >
-      <div
+      {/* <div
         className="h-48 bg-cover bg-center"
-        style={{ backgroundImage: `url(${data.image})` }}
-      />
+        // style={{ backgroundImage: `url(${data.image})` }}
+      /> */}
       {/* {flex flex-col justify-between p-4 bg-white flex-grow min-h-24} */}
-      <div className="flex flex-col p-4 justify-between min-h-60 bg-white flex-grow">
-        <div>
-          <h3 className={`text-2xl font-bold ${data.color} mb-2`}>
-            {data.name}
-          </h3>
-          <p className="text-sm text-gray-600 line-clamp-3">
-            {data.description}
+      <div className="flex flex-col p-4 justify-between min-h-72 bg-white flex-grow">
+        <div className="space-y-5 h-f">
+          <img
+            src={
+              images(
+                "https://mx-directus.dsolucoes.com",
+                data.sva_id.icone.id || ""
+              ).url
+            }
+            alt=""
+            className="w-36 min-h-20"
+          />
+          <p className="text-sm text-gray-600 line-clamp-3 mt-10">
+            {data.sva_id.descricao}
           </p>
         </div>
         <button className="flex items-center justify-center w-full rounded-full bg-green-500 px-4 py-2 text-white hover:bg-green-600 transition-colors mt-4">

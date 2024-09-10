@@ -1,19 +1,14 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/ms8a9Y9EVfG
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
-import {
-  CpuIcon,
-  DatabaseIcon,
-  MemoryStickIcon,
-  NetworkIcon,
-  PlusIcon,
-} from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import { Button } from "../ui/button";
+import { Icon } from "@iconify/react";
+import { Plano } from "@/types/planos";
+import { Dialog, DialogTrigger } from "../ui/dialog";
+import ModalAplicativos from "./modalAplicativos";
+import { Empresa } from "@/types/empresa";
+import Link from "next/link";
 
 const cardVariants = cva("w-full select-none grid gap-2", {
   variants: {
@@ -27,31 +22,15 @@ const cardVariants = cva("w-full select-none grid gap-2", {
   },
 });
 
-const apps = [
-  {
-    icon: CpuIcon,
-    text: "2 vCPU",
-  },
-  {
-    icon: MemoryStickIcon,
-    text: "2 GB RAM",
-  },
-  {
-    icon: DatabaseIcon,
-    text: "50 GB SSD",
-  },
-  {
-    icon: NetworkIcon,
-    text: "1 TB Transfer",
-  },
-];
-
 export interface CardPlanosProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {}
+    VariantProps<typeof cardVariants> {
+  data: Plano;
+  empresa: Empresa;
+}
 
 export default function CardPlanos(
-  { className, variant, ...props }: CardPlanosProps,
+  { className, variant, data, empresa, ...props }: CardPlanosProps,
   ref: React.Ref<HTMLDivElement>
 ) {
   return (
@@ -63,7 +42,7 @@ export default function CardPlanos(
             variant === "primary" ? "text-white" : "text-blue-500"
           )}
         >
-          Internet fibra + aplicativos
+          Internet fibra {data.svas.length > 0 && `+ Aplicativos`}
         </h2>
         <p
           className={cn(
@@ -71,8 +50,7 @@ export default function CardPlanos(
             variant === "primary" ? "text-lime-500" : "text-blue-500"
           )}
         >
-          <strong>450</strong>
-          <span>MEGA</span>
+          {data.nome.toUpperCase()}
         </p>
       </div>
       <div
@@ -81,7 +59,7 @@ export default function CardPlanos(
           variant === "primary" ? "bg-blue-800 text-white" : " text-blue-500"
         )}
       >
-        {apps.map((item, index) => (
+        {data.servicos.map((item, index) => (
           <div key={index} className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-md">
               <div
@@ -89,31 +67,47 @@ export default function CardPlanos(
                   variant === "primary" ? "text-lime-500" : "text-blue-500"
                 )}
               >
-                <item.icon size={24} />
+                <Icon
+                  icon={item.servicos_id.icone}
+                  style={{
+                    width: 30,
+                    height: 30,
+                  }}
+                />
               </div>
-              <span className="">{item.text}</span>
+              <span>{item.servicos_id.nome}</span>
             </div>
           </div>
         ))}
       </div>
       <div className="flex flex-col p-2 gap-3">
-        <Button
-          variant={variant !== "primary" ? "default" : "outline"}
-          size="lg"
-          className={cn(
-            "rounded-full h-16 text-md ",
-            variant === "primary" && "bg-white"
-          )}
+        <Link
+          href={`${empresa.whatsapp}?text=Gostaria de assinar o plano ${data.nome}`}
         >
-          Assinar Agora
-        </Button>
-        <Button
-          variant="primaryGreen"
-          size="lg"
-          className=" rounded-full h-16 text-md"
-        >
-          + Aplicativos
-        </Button>
+          <Button
+            variant={variant !== "primary" ? "default" : "outline"}
+            size="lg"
+            className={cn(
+              "rounded-full h-16 text-md w-full ",
+              variant === "primary" && "bg-white"
+            )}
+          >
+            Assinar Agora
+          </Button>
+        </Link>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button
+              variant="primaryGreen"
+              size="lg"
+              className="rounded-full h-16 text-md"
+            >
+              + Aplicativos
+            </Button>
+          </DialogTrigger>
+
+          <ModalAplicativos data={data} />
+        </Dialog>
 
         <div
           className={cn("flex items-center p-3 gap-2 justify-center w-full")}
