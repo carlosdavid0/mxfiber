@@ -1,4 +1,4 @@
-import { Play, Gamepad2, Music, Tv, MessageCircle } from "lucide-react";
+import { Play, Gamepad2, Music, Tv } from "lucide-react";
 import { CarouselDestaquesOTT } from "./carrousell";
 import { cn } from "@/lib/utils";
 

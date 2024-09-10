@@ -5,11 +5,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { CardOtts, Service } from "./cardOtts";
-import { cn } from "@/lib/utils";
 
 type CarouselPlanosProps = {
   data: Service[];
