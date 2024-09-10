@@ -8,12 +8,14 @@ import {
 } from "@/components/ui/carousel";
 import { CardOtts } from "./cardOtts";
 import { Sva } from "@/types/planos";
+import { Empresa } from "@/types/empresa";
 
 type CarouselPlanosProps = {
   data: Sva[];
+  empresa: Empresa;
 };
 
-export function CarouselDestaquesOTT({ data }: CarouselPlanosProps) {
+export function CarouselDestaquesOTT({ data, empresa }: CarouselPlanosProps) {
   return (
     <Carousel
       opts={{
@@ -28,7 +30,7 @@ export function CarouselDestaquesOTT({ data }: CarouselPlanosProps) {
             key={index}
             className="basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 h-full"
           >
-            <CardOtts data={item} />
+            <CardOtts data={item} empresa={empresa} />
           </CarouselItem>
         ))}
       </CarouselContent>

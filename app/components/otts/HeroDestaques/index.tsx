@@ -3,9 +3,11 @@ import { Play, Gamepad2, Music, Tv } from "lucide-react";
 import { CarouselDestaquesOTT } from "./carrousell";
 import { cn } from "@/lib/utils";
 import { Sva } from "@/types/planos";
+import { Empresa } from "@/types/empresa";
 
 type Props = {
   planos: Plano[];
+  empresa: Empresa;
 };
 
 type Plano = {
@@ -40,7 +42,7 @@ function processarSvas(planos: Plano[]): Sva[] {
 
   return sortedSvas;
 }
-export default function Component({ planos }: Props) {
+export default function Component({ planos, empresa }: Props) {
   const svas = processarSvas(planos);
 
   console.log(svas);
@@ -71,7 +73,7 @@ export default function Component({ planos }: Props) {
       </div>
 
       <div className="px-4 col-span-2">
-        <CarouselDestaquesOTT data={svas} />
+        <CarouselDestaquesOTT empresa={empresa} data={svas} />
       </div>
     </section>
   );

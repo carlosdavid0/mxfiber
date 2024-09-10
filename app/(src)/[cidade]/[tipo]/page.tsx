@@ -171,8 +171,8 @@ async function Page({ params: { cidade, tipo } }: pageProps) {
         {planos.length > 0 && <HeroPlanos empresa={empresa} data={planos} />}
       </div>
 
-      {planos.length > 0 && <HeroSky />}
-      {planos.length > 0 && <HeroDestaque planos={planos} />}
+      {planos.length > 0 && <HeroSky empresa={empresa} />}
+      {planos.length > 0 && <HeroDestaque empresa={empresa} planos={planos} />}
       <ImprovedFAQSection data={faq.faq} />
     </>
   );

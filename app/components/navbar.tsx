@@ -23,7 +23,7 @@ type NavbarProps = {
 export default async function Navbar({ citie, empresa }: NavbarProps) {
   return (
     <section className="shadow-md sticky top-0 z-10 bg-white">
-      <Tarja />
+      {empresa.google_play && empresa.apple_store && <Tarja />}
       <header className="flex h-20 lg:h-28 w-full items-center px-4 md:px-6 max-w-screen-xl mx-auto">
         <Sheet>
           <div className="flex items-center justify-between w-full lg:w-fit">
@@ -34,7 +34,14 @@ export default async function Navbar({ citie, empresa }: NavbarProps) {
                 className="h-14 w-auto lg:hidden"
               />
               <div className="flex items-center gap-5">
-                <Button className="lg:hidden">Assine Já</Button>
+                <Link
+                  href={
+                    `${empresa.whatsapp}?text=Gostaria de assinar um plano de internet na MX` ||
+                    "#"
+                  }
+                >
+                  <Button className="lg:hidden">Assine Já</Button>
+                </Link>
                 <SheetTrigger asChild>
                   <Button variant="outline" size="icon" className="lg:hidden">
                     <MenuIcon className="h-6 w-6 text-blue-700" />
@@ -45,7 +52,7 @@ export default async function Navbar({ citie, empresa }: NavbarProps) {
             </div>
           </div>
 
-          <SheetContent side="left" className="bg-white p-4 shadow-lg">
+          <SheetContent side="left" className="bg-white p-4 shadow-lg h-full">
             <a href="/">
               <Image
                 src={logo}
@@ -65,6 +72,30 @@ export default async function Navbar({ citie, empresa }: NavbarProps) {
                 </Link>
               ))}
             </nav>
+            <div className="space-y-6 my-5">
+              <Link
+                href={
+                  `${empresa.whatsapp}?text=Gostaria de assinar um plano de internet na MX` ||
+                  "#"
+                }
+                prefetch={false}
+                className="flex items-center gap-2 w-full"
+              >
+                <Button>Assine Já</Button>
+              </Link>
+
+              <Link
+                href="/"
+                prefetch={false}
+                className="flex items-center gap-2"
+              >
+                <span className="text-blue-500 space-x-1">MX Fibra em</span>
+                <strong className="text-blue-500">
+                  {citie?.nome ? citie.nome : " Sua Cidade"}
+                </strong>
+                <ChevronDown className="h-6 w-6 text-blue-500" />
+              </Link>
+            </div>
           </SheetContent>
         </Sheet>
         <Link
@@ -97,15 +128,20 @@ export default async function Navbar({ citie, empresa }: NavbarProps) {
         </NavigationMenu>
         <div className="items-center space-x-4 ml-auto hidden lg:flex">
           <Link
-            href={empresa.whatsapp || "#"}
+            href={
+              `${empresa.whatsapp}?text=Gostaria de assinar um plano de internet na MX` ||
+              "#"
+            }
             prefetch={false}
             className="flex items-center gap-2"
           >
             <Button>Assine Já</Button>
           </Link>
-          <Button variant={"primaryGreen"} className="te">
-            {empresa.nome_do_app}
-          </Button>
+          {empresa.nome_do_app && (
+            <Button variant={"primaryGreen"} className="te">
+              {empresa.nome_do_app}
+            </Button>
+          )}
           <Link href="/" prefetch={false} className="flex items-center gap-2">
             <span className="text-blue-500 space-x-1">MX Fibra em</span>
             <strong className="text-blue-500">

@@ -1,6 +1,8 @@
+import { Empresa } from "@/types/empresa";
 import { Sva } from "@/types/planos";
 import { images } from "@/utils/images";
 import { MessageCircle } from "lucide-react";
+import Link from "next/link";
 
 export type Service = {
   name: string;
@@ -11,9 +13,10 @@ export type Service = {
 
 export type ottData = {
   data: Sva;
+  empresa: Empresa;
 };
 
-export function CardOtts({ data }: ottData) {
+export function CardOtts({ data, empresa }: ottData) {
   return (
     <div
       key={data.sva_id.nome}
@@ -40,10 +43,12 @@ export function CardOtts({ data }: ottData) {
             {data.sva_id.descricao}
           </p>
         </div>
-        <button className="flex items-center justify-center w-full rounded-full bg-green-500 px-4 py-2 text-white hover:bg-green-600 transition-colors mt-4">
-          <span>conhecer mais</span>
-          <MessageCircle className="ml-2 h-5 w-5" />
-        </button>
+        <Link href={empresa.whatsapp}>
+          <button className="flex items-center justify-center w-full rounded-full bg-green-500 px-4 py-2 text-white hover:bg-green-600 transition-colors mt-4">
+            <span>conhecer mais</span>
+            <MessageCircle className="ml-2 h-5 w-5" />
+          </button>
+        </Link>
       </div>
     </div>
   );

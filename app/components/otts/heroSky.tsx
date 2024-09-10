@@ -1,7 +1,13 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { Empresa } from "@/types/empresa";
+import Link from "next/link";
 
-export function HeroSky() {
+type props = {
+  empresa: Empresa;
+};
+
+export function HeroSky({ empresa }: props) {
   return (
     <div className="w-full">
       <div className="relative h-[400px] max-h-full">
@@ -25,12 +31,14 @@ export function HeroSky() {
                 exclusivos DSPORTS. São mais de 90 jogos!
               </p>
               <div className="flex gap-4">
-                <Button
-                  variant="destructive"
-                  className="h-16 w-full lg:min-w-[70%] rounded-xl transition-all"
-                >
-                  Assine Já
-                </Button>
+                <Link href={empresa.whatsapp}>
+                  <Button
+                    variant="destructive"
+                    className="h-16 w-full lg:min-w-[70%] rounded-xl transition-all"
+                  >
+                    Assine Já
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
