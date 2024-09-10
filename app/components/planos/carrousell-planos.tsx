@@ -9,34 +9,38 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import CardPlanos from "./card-planos";
+import { cn } from "@/lib/utils";
 
-export function CarouselSize() {
-  const d = {
-    desktop: 5,
-    tablet: 3,
-    mobile: 1,
-  };
+export function CarouselPlanos() {
   return (
     <Carousel
       opts={{
         align: "start",
         loop: true,
-        slidesToScroll: d as any,
       }}
-      className="w-full max-w-full"
+      className="relative w-full md:px-4 lg:px-6 xl:px-8"
     >
       <CarouselContent>
         {Array.from({ length: 10 }).map((_, index) => (
           <CarouselItem
             key={index}
-            className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
+            className="basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
           >
-            <CardPlanos />
+            <CardPlanos variant={index % 2 === 0 ? "primary" : "secondary"} />
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+
+      <CarouselPrevious
+        className={cn(
+          "absolute top-1/2 -translate-y-1/2 left-2 z-0 bg-blue-500 hover:bg-blue-600 hover:text-white text-gray-50 rounded-full p-2"
+        )}
+      />
+      <CarouselNext
+        className={cn(
+          "absolute top-1/2 -translate-y-1/2 right-5 z-0 bg-blue-500 hover:bg-blue-600 hover:text-white text-gray-50 rounded-full p-2"
+        )}
+      />
     </Carousel>
   );
 }

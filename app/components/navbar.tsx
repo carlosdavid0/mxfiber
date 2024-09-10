@@ -7,10 +7,13 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { ChevronDown, MenuIcon } from "lucide-react";
+import Image from "next/image";
+import { Tarja } from "./minhaMx/tarja";
 
 export default function Navbar() {
   return (
-    <section className="bg-white shadow-md">
+    <section className="shadow-md sticky top-0 z-10 bg-white">
+      <Tarja />
       <header className="flex h-20 lg:h-28 w-full items-center px-4 md:px-6 max-w-screen-xl mx-auto">
         <Sheet>
           <div className="flex items-center justify-between w-full lg:w-fit">
@@ -59,10 +62,12 @@ export default function Navbar() {
           className="mr-6 hidden lg:flex items-center space-x-2"
           prefetch={false}
         >
-          <img
-            src="https://www.mxfibra.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-blue.1035add7.png&w=750&q=75"
+          <Image
+            src="https://mxfibra.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-blue.1035add7.png&w=750&q=75"
             alt="Logo MX"
             className="h-12 w-auto"
+            width={500}
+            height={500}
           />
         </Link>
         <NavigationMenu className="hidden lg:flex flex-grow items-center justify-between w-full">
@@ -83,7 +88,10 @@ export default function Navbar() {
           </NavigationMenuList>
         </NavigationMenu>
         <div className="items-center space-x-4 ml-auto hidden lg:flex">
-          <Button variant="default">Contact Us</Button>
+          <Button>Assine Já</Button>
+          <Button variant={"primaryGreen"} className="te">
+            Minha MX
+          </Button>
           <Link href="/" prefetch={false} className="flex items-center gap-2">
             <span className="text-blue-500">
               MX Fibra em <strong>Fortaleza</strong>

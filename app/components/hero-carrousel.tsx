@@ -64,13 +64,13 @@ export function HeroCarrousel({ hiddenOnMobile = true }: HeroCarrouselProps) {
       </CarouselContent>
       <CarouselPrevious
         className={cn(
-          "absolute left-5 top-1/2 transform -translate-y-1/2 z-10 ",
+          "absolute left-5 top-1/2 transform -translate-y-1/2 z-0 ",
           hiddenOnMobile ? "hidden lg:flex" : ""
         )}
       />
       <CarouselNext
         className={cn(
-          "absolute right-5 top-1/2 transform -translate-y-1/2 z-10 ",
+          "absolute right-5 top-1/2 transform -translate-y-1/2 z-0 ",
           hiddenOnMobile ? "hidden lg:flex" : ""
         )}
       />
