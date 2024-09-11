@@ -1,13 +1,9 @@
 import { Metadata } from "next";
-import Link from "next/link";
-
-import { cn } from "@/lib/utils";
-import { ScrollArea } from "../components/ui/scroll-area";
-import { ChevronRightIcon, MapPinIcon } from "lucide-react";
 import { Cidade } from "@/types/cidades";
 import Image from "next/image";
 import logo from "@/assets/logo.webp";
 import { fetchData } from "@/utils/fetch";
+import { ListCities } from "@/components/cidades/list-cities";
 
 export const metadata: Metadata = {
   title: "MX Fibra",
@@ -30,33 +26,7 @@ export default async function AuthenticationPage() {
         <header className="w-full py-10 flex flex-col gap-10 items-start">
           <Image src={logo} alt="Logo MX" className="h-20 w-auto" />
         </header>
-        <ScrollArea
-          className="container lg:mx-auto lg:max-h-[600px] max-h-[500px] overflow-y-auto"
-          id="scroll-cities"
-        >
-          {cities?.map((item, index) => (
-            <Link
-              key={item.id}
-              href={`/${item.slug}/para-voce`}
-              prefetch={false}
-            >
-              <div
-                className={cn(
-                  "flex items-center justify-between  py-3  border-white/10 transition-all my-2 hover:bg-blue-500 0 rounded-md px-2 ",
-                  index === 0 && "border-0"
-                )}
-              >
-                <div className="flex items-center gap-3">
-                  <MapPinIcon size={24} className="text-white/60" />
-                  <span className="text-white text-xl font-medium">
-                    {item.nome} - {item.estado.sigla}
-                  </span>
-                </div>
-                <ChevronRightIcon size={24} />
-              </div>
-            </Link>
-          ))}
-        </ScrollArea>
+        <ListCities cities={cities} />
       </section>
     </div>
   );
