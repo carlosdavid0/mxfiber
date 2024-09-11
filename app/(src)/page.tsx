@@ -42,7 +42,7 @@ export default async function AuthenticationPage() {
             >
               <div
                 className={cn(
-                  "flex items-center justify-between  py-3  border-white/10 transition-all my-2 hover:bg-blue-300 hover:border-white/20 rounded-md px-2 hover:shadow-md",
+                  "flex items-center justify-between  py-3  border-white/10 transition-all my-2 hover:bg-blue-500 0 rounded-md px-2 ",
                   index === 0 && "border-0"
                 )}
               >
