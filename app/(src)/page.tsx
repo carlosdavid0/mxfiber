@@ -25,7 +25,7 @@ export default async function AuthenticationPage() {
   const cities = await getCities();
 
   return (
-    <div className="bg-blue-500 h-screen ">
+    <div className="bg-[#105BCF] h-screen ">
       <section className="lg:mx-auto max-w-screen-md mx-10">
         <header className="w-full py-10 flex flex-col gap-10 items-start">
           <Image src={logo} alt="Logo MX" className="h-20 w-auto" />
