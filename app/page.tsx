@@ -21,13 +21,13 @@ export default async function AuthenticationPage() {
   const cities = await getCities();
 
   return (
-    <div className="bg-[#105BCF] h-screen ">
-      <section className="lg:mx-auto max-w-screen-md mx-10">
-        <header className="w-full py-10 flex flex-col gap-10 items-start">
-          <Image src={logo} alt="Logo MX" className="h-20 w-auto" />
-        </header>
-        <ListCities cities={cities} />
-      </section>
-    </div>
+    <main className="bg-[#105bcf] min-h-screen ">
+      <div className="lg:px-6 px-3 py-7 space-y-5 lg:col-span-2 mx-auto container max-w-screen-lg">
+        <Image src={logo} alt="MXFiber" className="w-32" />
+        <section>
+          <ListCities cities={cities} />
+        </section>
+      </div>
+    </main>
   );
 }

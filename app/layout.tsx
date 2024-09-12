@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "../globals.css";
+import "./globals.css";
 // import DevBanner from "@/components/ambiente-dev";
 
 export const metadata: Metadata = {

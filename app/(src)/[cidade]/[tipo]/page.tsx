@@ -2,6 +2,8 @@ import { ImprovedFAQSection } from "@/components/faq";
 import HeroDestaque from "@/components/otts/HeroDestaques/";
 import { HeroSky } from "@/components/otts/heroSky";
 import { HeroPlanos } from "@/components/planos/hero";
+import { endpoint } from "@/constants/endpoint";
+import { cn } from "@/lib/utils";
 import { Empresa } from "@/types/empresa";
 import { Faq } from "@/types/faq";
 import { Plano } from "@/types/planos";
@@ -15,8 +17,6 @@ type pageProps = {
 };
 
 async function getPage(citie: string, tipo: string) {
-  const endpoint = `${process.env.BASE_URL}/graphql`;
-
   const citiesQuery = gql`
      query Planos {
   planos(filter: { tipo: { _eq: "${tipo}" }}) {
@@ -107,8 +107,6 @@ async function getPage(citie: string, tipo: string) {
 }
 
 async function getFAQ() {
-  const endpoint = `${process.env.BASE_URL}/graphql`;
-
   const queryFaQ = gql`
     query Faq {
       faq {
@@ -130,8 +128,6 @@ async function getFAQ() {
 }
 
 async function getEmpresa() {
-  const endpoint = `${process.env.BASE_URL}/graphql`;
-
   const empresaQuery = gql`
     query Empresa {
       empresa {
@@ -167,7 +163,7 @@ async function Page({ params: { cidade, tipo } }: pageProps) {
 
   return (
     <>
-      <div className="py-6 max-w-screen-xl lg:mx-auto mx-2">
+      <div className={cn("py-6 lg:mx-auto mx-2 max-w-screen-xl")}>
         {planos.length > 0 && <HeroPlanos empresa={empresa} data={planos} />}
       </div>
 

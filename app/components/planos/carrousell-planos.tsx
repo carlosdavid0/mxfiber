@@ -31,7 +31,9 @@ export function CarouselPlanos({ data, empresa }: planosCarrousel) {
         {data.map((item, index) => (
           <CarouselItem
             key={index}
-            className="basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+            className={cn(
+              "basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+            )}
           >
             <CardPlanos
               empresa={empresa}

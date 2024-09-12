@@ -1,8 +1,7 @@
 "use client";
-import { cn } from "@/lib/utils";
 import { Cidade } from "@/types/cidades";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { ChevronRightIcon, MapPinIcon, SearchIcon } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -34,27 +33,22 @@ export function ListCities({ cities }: props) {
           className="absolute right-2 top-2 text-white/60"
         />
       </div>
+
       <ScrollArea
-        className="container lg:mx-auto lg:max-h-[600px] max-h-[500px] overflow-y-auto"
+        className="container lg:mx-auto lg:max-h-[600px] max-h-[500px] overflow-y-auto space-y-5 mt-5"
         id="scroll-cities"
       >
         {filteredCities.map((item, index) => (
-          <Link key={item.id} href={`/${item.slug}/para-voce`} prefetch={false}>
-            <div
-              className={cn(
-                "flex items-center justify-between py-3 border-white/10 transition-all my-2 hover:bg-blue-500 rounded-md px-2",
-                index === 0 && "border-0"
-              )}
-            >
-              <div className="flex items-center gap-3">
-                <MapPinIcon size={24} className="text-white/60" />
-                <span className="text-white text-xl font-medium">
-                  {item.nome} - {item.estado.sigla}
-                </span>
-              </div>
-              <ChevronRightIcon size={24} />
-            </div>
-          </Link>
+          <li
+            key={index}
+            className="flex items-center space-x-4 justify-between"
+          >
+            <Link href={`${item.slug}/para-voce`}>
+              <p className="text-2xl text-gray-300 hover:text-white cursor-pointer transition-all duration-200 font-thin">
+                {item.nome} - {item.estado.sigla}
+              </p>
+            </Link>
+          </li>
         ))}
       </ScrollArea>
     </div>

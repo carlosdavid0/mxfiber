@@ -1,14 +1,11 @@
 import Footer from "@/components/footer";
-import { HeroCarrousel } from "@/components/hero-carrousel";
 import Navbar from "@/components/navbar";
 import { endpoint } from "@/constants/endpoint";
-import { Carrosel } from "@/types/banners";
 import { Cidade } from "@/types/cidades";
 import { Empresa } from "@/types/empresa";
 import request, { gql } from "graphql-request";
 
 type LayoutCidadesProps = {
-  children: React.ReactNode;
   params: { cidade: string };
 };
 
@@ -51,30 +48,6 @@ async function generalInfomations(citie: string) {
     endpoint,
     empresaQuery
   );
-  const bannerQuery = gql`
-    query Carrosel {
-    carrosel(filter: { cidades: { cidades_id: { slug: { _eq: "${citie}" } } } }) {
-        id
-        status
-        sort
-        user_created
-        date_created
-        user_updated
-        date_updated
-        cidades {
-            cidades_id {
-                slug
-            }
-        }
-        banner {
-            id
-        }
-        banner_mobile {
-            id
-        }
-    }
-        }
-  `;
 
   const data_citie: { cidades: Cidade[] } = await request(endpoint, citiesQuery)
     .then((data) => {
@@ -85,26 +58,27 @@ async function generalInfomations(citie: string) {
       return { cidades: [] };
     });
 
-  const data_banner: { carrosel: Carrosel[] } = await request(
-    endpoint,
-    bannerQuery
-  );
-
   return {
     citie: data_citie.cidades[0],
     empresa: data_empresa.empresa,
-    banner: data_banner.carrosel,
   };
 }
 
-async function LayoutCidades({ children, params }: LayoutCidadesProps) {
+async function LayoutCidades({ params }: LayoutCidadesProps) {
   const Informations = await generalInfomations(params.cidade);
 
   return (
     <main className="bg-gray-100 min-h-screen max-h-full">
       <Navbar citie={Informations.citie} empresa={Informations.empresa} />
-      <HeroCarrousel Carrousel={Informations.banner} />
-      <section>{children}</section>
+      <section className="max-w-screen-xl lg:mx-auto mx-4 py-5 text-black">
+        <div
+          id="renderPrivacidadeContent"
+          className="prose max-w-full"
+          dangerouslySetInnerHTML={{
+            __html: Informations?.empresa?.privacidade,
+          }}
+        />
+      </section>
       <Footer data={Informations.empresa} />
     </main>
   );

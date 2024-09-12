@@ -1,6 +1,7 @@
 import { Plano } from "@/types/planos";
 import { CarouselPlanos } from "./carrousell-planos";
 import { Empresa } from "@/types/empresa";
+import { cn } from "@/lib/utils";
 
 type HeroPlanosProps = {
   data?: Plano[];
@@ -9,9 +10,15 @@ type HeroPlanosProps = {
 
 export function HeroPlanos({ data, empresa }: HeroPlanosProps) {
   return (
-    <section>
-      <div>
-        <h1 className="text-3xl text-center  text-blue-800 space-x-1 mb-5">
+    <section className="px-4 py-8">
+      <div className="max-w-full md:max-w-[90%] mx-auto">
+        <h1
+          className={cn(
+            "text-center text-blue-800 space-x-1 mb-5",
+            "text-2xl md:text-3xl lg:text-4xl",
+            "line-clamp-2" // Melhora o espaçamento entre linhas
+          )}
+        >
           <span>Mais</span>
           <strong>Velocidade</strong>
           <span>de</span>
@@ -19,19 +26,6 @@ export function HeroPlanos({ data, empresa }: HeroPlanosProps) {
           <span>por toda sua casa</span>
         </h1>
 
-        {/* <nav>
-          <ul className="flex items-center justify-center gap-4 py-5 transition-all duration-300">
-            <li className=" text-blue-600 hover:text-blue-700 hover:underline cursor-pointer">
-              Internet
-            </li>
-            <li className=" text-blue-600 hover:text-blue-700 hover:underline cursor-pointer">
-              TV
-            </li>
-            <li className=" text-blue-600 hover:text-blue-700 hover:underline cursor-pointer">
-              Combos
-            </li>
-          </ul>
-        </nav> */}
         <CarouselPlanos empresa={empresa} data={data || []} />
       </div>
     </section>
