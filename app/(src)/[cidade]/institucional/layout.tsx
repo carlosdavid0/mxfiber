@@ -47,7 +47,7 @@ async function generalInfomations(citie: string) {
     }
   `;
   const data_empresa: { empresa: Empresa } = await request(
-    endpoint,
+    `${`${endpoint}/graphql`}/graphql`,
     empresaQuery
   );
   const bannerQuery = gql`
@@ -75,7 +75,10 @@ async function generalInfomations(citie: string) {
         }
   `;
 
-  const data_citie: { cidades: Cidade[] } = await request(endpoint, citiesQuery)
+  const data_citie: { cidades: Cidade[] } = await request(
+    `${endpoint}/graphql`,
+    citiesQuery
+  )
     .then((data) => {
       return data as { cidades: Cidade[] };
     })
@@ -85,7 +88,7 @@ async function generalInfomations(citie: string) {
     });
 
   const data_banner: { carrosel: Carrosel[] } = await request(
-    endpoint,
+    `${`${endpoint}/graphql`}/graphql`,
     bannerQuery
   );
 

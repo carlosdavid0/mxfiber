@@ -101,7 +101,10 @@ async function getPage(citie: string, tipo: string) {
 }
 `;
 
-  const data_planos: { planos: Plano[] } = await request(endpoint, citiesQuery);
+  const data_planos: { planos: Plano[] } = await request(
+    `${endpoint}/graphql`,
+    citiesQuery
+  );
 
   return data_planos.planos;
 }
@@ -123,7 +126,7 @@ async function getFAQ() {
     }
   `;
 
-  const data: { faq: Faq[] } = await request(endpoint, queryFaQ);
+  const data: { faq: Faq[] } = await request(`${endpoint}/graphql`, queryFaQ);
   return data;
 }
 
@@ -149,7 +152,7 @@ async function getEmpresa() {
     }
   `;
   const data_empresa: { empresa: Empresa } = await request(
-    endpoint,
+    `${`${endpoint}/graphql`}/graphql`,
     empresaQuery
   );
 
