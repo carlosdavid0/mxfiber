@@ -169,7 +169,7 @@ async function Page({ params: { cidade, tipo } }: pageProps) {
 
       {planos.length > 0 && <HeroSky empresa={empresa} />}
       {planos.length > 0 && <HeroDestaque empresa={empresa} planos={planos} />}
-      <ImprovedFAQSection data={faq.faq} />
+      <ImprovedFAQSection data={faq.faq} empresa={empresa} />
     </>
   );
 }

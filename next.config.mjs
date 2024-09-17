@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'standalone',
     images: {
         remotePatterns: [
             {
@@ -16,6 +17,11 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'mx-directus.dsolucoes.com',
+                port: '',
+            },
+            {
+                protocol: 'https',
+                hostname: 'admin.mxfibra.com',
                 port: '',
             }
 

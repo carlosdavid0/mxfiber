@@ -64,7 +64,7 @@ export default async function Navbar({ citie, empresa }: NavbarProps) {
               {items.map((item, index) => (
                 <Link
                   key={index}
-                  href="#"
+                  href={`${citie?.slug ? `/${citie.slug}/${item.slug}` : `/`}`}
                   className="block py-2 text-lg font-semibold text-blue-700 hover:text-blue-900 focus:outline-none"
                   prefetch={false}
                 >

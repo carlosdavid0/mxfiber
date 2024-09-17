@@ -9,12 +9,15 @@ import { cn } from "@/lib/utils";
 import { HelpCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import { Faq } from "@/types/faq";
+import { Empresa } from "@/types/empresa";
+import Link from "next/link";
 
 type data = {
   data: Faq[];
+  empresa: Empresa;
 };
 
-export function ImprovedFAQSection({ data }: data) {
+export function ImprovedFAQSection({ data, empresa }: data) {
   return (
     <div className="bg-blue-600">
       <section
@@ -30,9 +33,11 @@ export function ImprovedFAQSection({ data }: data) {
             Tire suas dúvidas sobre a internet MX Fibra
           </h2>
 
-          <Button className="h-16 lg:w-full w-fit rounded-full bg-green-600 hover:bg-green-700">
-            Assine pelo WhatsApp
-          </Button>
+          <Link href={empresa.whatsapp}>
+            <Button className="h-16 lg:w-full w-fit rounded-lg bg-green-600 hover:bg-green-700 mt-4">
+              Assine pelo WhatsApp
+            </Button>
+          </Link>
         </div>
         <div className="lg:px-8 col-span-2">
           <Accordion type="single" collapsible className="w-full  ">
@@ -42,11 +47,11 @@ export function ImprovedFAQSection({ data }: data) {
                 value={`item-${index}`}
                 className="mb-4"
               >
-                <AccordionTrigger className="text-left text-lg hover:no-underline bg-transparent text-white rounded-lg px-4 py-2 transition-all duration-200 ease-in-out  hover:bg-blue-500">
+                <AccordionTrigger className="text-left text-lg hover:no-underline bg-transparent text-white rounded-lg px-4 py-2 transition-all duration-200 ease-in-out  hover:bg-blue-500 shadow-none">
                   {faq.pergunta}
                 </AccordionTrigger>
                 <AccordionContent className="overflow-hidden transition-all duration-200 ease-in-out data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-                  <div className="bg-transparent rounded-b-lg px-4 py-3 shadow-inner">
+                  <div className="bg-transparent rounded-b-lg px-4 py-3">
                     <p className="text-white/90 text-lg font-light">
                       {faq.resposta}
                     </p>

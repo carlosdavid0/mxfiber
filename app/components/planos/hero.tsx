@@ -10,7 +10,7 @@ type HeroPlanosProps = {
 
 export function HeroPlanos({ data, empresa }: HeroPlanosProps) {
   return (
-    <section className="px-4 py-8">
+    <section>
       <div className="max-w-full md:max-w-[90%] mx-auto">
         <h1
           className={cn(
