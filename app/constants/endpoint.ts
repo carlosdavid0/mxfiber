@@ -1,1 +1,1 @@
-export const endpoint = `${process.env.BASE_URL}/graphql`;
+export const endpoint = `https://mx-directus.dsolucoes.com`;
