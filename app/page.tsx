@@ -11,10 +11,15 @@ export const metadata: Metadata = {
 };
 
 const getCities = async (): Promise<Cidade[]> => {
-  const response: Promise<Cidade[]> = await fetchData({
-    path: "/items/cidades?fields[]=estado.nome&fields[]=estado.id&fields[]=nome&fields[]=status&fields[]=id&sort[]=sort&fields[]=estado.sigla&fields[]=slug",
-  });
-  return response;
+  try {
+    const response: Promise<Cidade[]> = await fetchData({
+      path: "/items/cidades?fields[]=estado.nome&fields[]=estado.id&fields[]=nome&fields[]=status&fields[]=id&sort[]=sort&fields[]=estado.sigla&fields[]=slug",
+    });
+    return response;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
 };
 
 export default async function AuthenticationPage() {

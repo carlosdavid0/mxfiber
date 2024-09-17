@@ -6,7 +6,7 @@ type FetchData = {
 
 export async function fetchData({ path }: FetchData) {
   const response = await fetch(
-    `${`${endpoint}/graphql`}${path}${path.includes("?") ? "&" : "?"}${
+    `${`${endpoint}`}${path}${path.includes("?") ? "&" : "?"}${
       process.env.MODE !== "development" && "filter[status][_eq]=published"
     }`
   );

@@ -12,7 +12,7 @@ type props = {
 export function ListCities({ cities }: props) {
   const [search, setSearch] = useState("");
 
-  const filteredCities = cities.filter((city) =>
+  const filteredCities = cities?.filter((city) =>
     city.nome.toLowerCase().includes(search.toLowerCase())
   );
 
