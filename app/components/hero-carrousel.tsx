@@ -4,8 +4,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import { Carrosel } from "@/types/banners";
@@ -48,7 +48,7 @@ export function HeroCarrousel({
                     media="(max-width: 767px)"
                     srcSet={
                       images(
-                        "https://mx-directus.dsolucoes.com",
+                        "https://cms.mxfibra.com",
                         src.banner_mobile.id || ""
                       ).url
                     }
@@ -56,16 +56,10 @@ export function HeroCarrousel({
                 )}
                 <source
                   media="(min-width: 768px)"
-                  srcSet={
-                    images("https://mx-directus.dsolucoes.com", src.banner.id)
-                      .url
-                  }
+                  srcSet={images("https://cms.mxfibra.com", src.banner.id).url}
                 />
                 <img
-                  src={
-                    images("https://mx-directus.dsolucoes.com", src.banner.id)
-                      .url
-                  }
+                  src={images("https://cms.mxfibra.com", src.banner.id).url}
                   alt={`Imagem ${index + 1}`}
                   className="object-cover w-full h-full max-w-full"
                   style={{ aspectRatio: "auto" }} // Ajuste a razão de aspecto conforme necessário

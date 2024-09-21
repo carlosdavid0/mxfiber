@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import * as React from "react";
 
 import {
   Carousel,
@@ -8,10 +7,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import CardPlanos from "./card-planos";
 import { cn } from "@/lib/utils";
-import { Plano } from "@/types/planos";
 import { Empresa } from "@/types/empresa";
+import { Plano } from "@/types/planos";
+import CardPlanos from "./card-planos";
 
 type planosCarrousel = {
   data: Plano[];
@@ -32,7 +31,13 @@ export function CarouselPlanos({ data, empresa }: planosCarrousel) {
           <CarouselItem
             key={index}
             className={cn(
-              "basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+              data.length >= 4 &&
+                "basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4",
+              data.length === 3 &&
+                "basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/3",
+              data.length === 2 && "basis-full sm:basis-1/2 md:basis-1/2",
+              data.length === 1 &&
+                "basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/2 xl:basis-1/2"
             )}
           >
             <CardPlanos

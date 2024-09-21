@@ -27,6 +27,7 @@ async function generalInfomations(citie: string) {
     }
 }
 `;
+
   const empresaQuery = gql`
     query Empresa {
       empresa {
@@ -48,9 +49,10 @@ async function generalInfomations(citie: string) {
     }
   `;
   const data_empresa: { empresa: Empresa } = await request(
-    `${`${endpoint}/graphql`}/graphql`,
+    `${endpoint}/graphql`,
     empresaQuery
   );
+
   const bannerQuery = gql`
     query Carrosel {
     carrosel(filter: { cidades: { cidades_id: { slug: { _eq: "${citie}" } } } }) {
@@ -89,7 +91,7 @@ async function generalInfomations(citie: string) {
     });
 
   const data_banner: { carrosel: Carrosel[] } = await request(
-    `${`${endpoint}/graphql`}/graphql`,
+    `${endpoint}/graphql`,
     bannerQuery
   );
 

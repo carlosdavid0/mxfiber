@@ -1,1 +1,1 @@
-export const endpoint = `https://mx-directus.dsolucoes.com`;
+export const endpoint = `https://cms.mxfibra.com`;

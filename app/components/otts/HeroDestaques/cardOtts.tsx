@@ -17,9 +17,13 @@ export type ottData = {
 };
 
 export function CardOtts({ data, empresa }: ottData) {
+  console.log({
+    data,
+  });
+
   return (
     <div
-      key={data.sva_id.nome}
+      key={data.sva_id?.nome}
       className="flex flex-col rounded-lg overflow-hidden shadow-lg "
     >
       {/* <div
@@ -31,16 +35,14 @@ export function CardOtts({ data, empresa }: ottData) {
         <div className="space-y-5 h-f">
           <img
             src={
-              images(
-                "https://mx-directus.dsolucoes.com",
-                data.sva_id.icone.id || ""
-              ).url
+              images("https://cms.mxfibra.com", data?.sva_id?.icone?.id || "")
+                .url
             }
             alt=""
             className="w-36 min-h-20"
           />
           <p className="text-sm text-gray-600 line-clamp-3 mt-10">
-            {data.sva_id.descricao}
+            {data.sva_id?.descricao}
           </p>
         </div>
         <Link href={empresa.whatsapp}>

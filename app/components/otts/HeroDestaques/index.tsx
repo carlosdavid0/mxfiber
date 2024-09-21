@@ -1,9 +1,9 @@
 "use client";
-import { Play, Gamepad2, Music, Tv } from "lucide-react";
-import { CarouselDestaquesOTT } from "./carrousell";
 import { cn } from "@/lib/utils";
-import { Sva } from "@/types/planos";
 import { Empresa } from "@/types/empresa";
+import { Sva } from "@/types/planos";
+import { Gamepad2, Music, Play, Tv } from "lucide-react";
+import { CarouselDestaquesOTT } from "./carrousell";
 
 type Props = {
   planos: Plano[];
@@ -20,7 +20,7 @@ function processarSvas(planos: Plano[]): Sva[] {
   planos.forEach((plano) => {
     plano.svas.forEach((sva) => {
       // Remove duplicados
-      if (!svas.some((s) => s.sva_id.nome === sva.sva_id.nome)) {
+      if (!svas.some((s) => s.sva_id?.nome === sva.sva_id?.nome)) {
         svas.push(sva);
       }
     });
@@ -44,8 +44,6 @@ function processarSvas(planos: Plano[]): Sva[] {
 }
 export default function Component({ planos, empresa }: Props) {
   const svas = processarSvas(planos);
-
-  console.log(svas);
 
   return (
     <section

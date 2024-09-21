@@ -19,7 +19,7 @@ type pageProps = {
 async function getPage(citie: string, tipo: string) {
   const citiesQuery = gql`
      query Planos {
-  planos(filter: { tipo: { _eq: "${tipo}" }}) {
+  planos(filter: { tipo: { _eq: "${tipo}" }, cidades: { cidades_id: { slug: { _eq: "${citie}" }}}}) {
     id
     status
     sort
@@ -61,7 +61,6 @@ async function getPage(citie: string, tipo: string) {
             uploaded_on
         }
         status
-        sort
         user_created
         date_created
         user_updated
@@ -72,11 +71,10 @@ async function getPage(citie: string, tipo: string) {
         cor_destaque
       }
     }
-    cidades(filter: { cidades_id: { slug: { _eq: "${citie}" }}}) {
+    cidades {
       cidades_id {
         id
         status
-        sort
         user_created
         date_created
         user_updated
@@ -88,7 +86,6 @@ async function getPage(citie: string, tipo: string) {
       servicos_id {
         id
         status
-        sort
         user_created
         date_created
         user_updated

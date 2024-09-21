@@ -16,8 +16,8 @@ function ModalAplicativos({ data }: props) {
         {data?.svas.map((item: Sva, index: number) => (
           <div key={index} className="flex items-center gap-2 text-md">
             <img
-              src={`https://mx-directus.dsolucoes.com/assets/${item.sva_id.icone.id}`}
-              alt={item.sva_id.nome}
+              src={`https://cms.mxfibra.com/assets/${item.sva_id?.icone.id}`}
+              alt={item.sva_id?.nome}
               className="w-96"
             />
           </div>

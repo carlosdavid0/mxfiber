@@ -16,7 +16,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'mx-directus.dsolucoes.com',
+                hostname: 'https://cms.mxfibra.com',
                 port: '',
             },
             {
