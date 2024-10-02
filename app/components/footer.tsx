@@ -9,10 +9,10 @@ type empresas = {
 
 export default function Footer({ data }: empresas) {
   return (
-    <footer className="bg-gray-100 text-gray-600 py-12 flex">
+    <footer className="bg-gray-100 text-gray-600 py-8 md:py-12">
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="font-bold text-lg mb-4">Sobre nós</h3>
             <p className="text-sm">
               A MX Fibra é uma provedora de internet de alta velocidade que atua
@@ -20,7 +20,8 @@ export default function Footer({ data }: empresas) {
               óptica.
             </p>
           </div>
-          <div>
+
+          <div className="text-center md:text-left">
             <h3 className="font-bold text-lg mb-4">Links</h3>
             <ul className="space-y-2">
               {items.map((item, index) => (
@@ -36,9 +37,9 @@ export default function Footer({ data }: empresas) {
             </ul>
           </div>
 
-          <div>
-            <h3 className="font-bold text-lg mb-4">Siga nos</h3>
-            <div className="flex space-x-4">
+          <div className="text-center md:text-left">
+            <h3 className="font-bold text-lg mb-4">Siga-nos</h3>
+            <div className="flex justify-center md:justify-start space-x-4">
               <a
                 href={data.facebook}
                 className="text-gray-600 hover:text-gray-900 transition-colors"
@@ -57,13 +58,30 @@ export default function Footer({ data }: empresas) {
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-200 mt-8 pt-8 lg:mt-5 lg:pt-5 text-sm lg:flex items-center justify-between">
-          <p className="text-center">
-            &copy; {new Date().getFullYear()} MX Fibra. Todos os direitos
-            reservados.
-          </p>
 
-          <p className="text-center">Desenvolvido por Evalue Tecnologias</p>
+        <div className="border-t border-gray-200 mt-8 pt-8 text-sm md:flex items-start justify-between space-y-8 md:space-y-0">
+          <div className="text-center md:text-left">
+            <p>
+              &copy; {new Date().getFullYear()} MX Fibra. Todos os direitos
+              reservados.
+            </p>
+            <div className="space-y-2 mt-2">
+              <p>IMAX SOLUÇÕES E SERVIÇOS-LTDA</p>
+              <p>
+                <strong>CNPJ:</strong> 37.293.552/0001-00
+              </p>
+              <p>
+                <strong>E-mail: </strong>
+                <a href="mailto:suporte@mxfibra.net.br">
+                  suporte@mxfibra.net.br
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <p className="text-center md:text-left">
+            Desenvolvido por Evalue Tecnologias
+          </p>
         </div>
       </div>
     </footer>
