@@ -41,7 +41,7 @@ export default async function AuthenticationPage() {
       <footer className=" text-white text-center py-5 mt-auto flex lg:flex-row gap-5 flex-col lg:items-center lg:justify-center items-start justify-start mx-4 ">
         <p>IMAX SOLUÇÕES E SERVIÇOS-LTDA</p>
         <p>
-          <strong>CNPJ:</strong> 37.293.552/0001-00
+          <strong>CNPJ:</strong> 18.381.644/0001-32
         </p>
         <p>
           <strong>E-mail:</strong>{" "}

@@ -68,7 +68,7 @@ export default function Footer({ data }: empresas) {
             <div className="space-y-2 mt-2">
               <p>IMAX SOLUÇÕES E SERVIÇOS-LTDA</p>
               <p>
-                <strong>CNPJ:</strong> 37.293.552/0001-00
+                <strong>CNPJ:</strong> 18.381.644/0001-32
               </p>
               <p>
                 <strong>E-mail: </strong>
