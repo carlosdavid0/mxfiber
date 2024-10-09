@@ -16,7 +16,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'https://cms.mxfibra.com',
+                hostname: 'cms.mxfibra.com',
                 port: '',
             },
             {

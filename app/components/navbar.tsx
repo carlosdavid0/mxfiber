@@ -1,26 +1,25 @@
-"use server";
-import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+"use client";
+import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import {
   NavigationMenu,
-  NavigationMenuList,
   NavigationMenuLink,
+  NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { items } from "@/constants/menu";
+import { ReturnCity } from "@/context/CidadeProvider";
+import { Empresa } from "@/types/empresa";
 import { ChevronDown, MenuIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Tarja } from "./minhaMx/tarja";
-import { Cidade } from "@/types/cidades";
-import { items } from "@/constants/menu";
-import { Empresa } from "@/types/empresa";
-import logo from "@/assets/logo.png";
 
 type NavbarProps = {
-  citie: Cidade;
   empresa: Empresa;
 };
 
-export default async function Navbar({ citie, empresa }: NavbarProps) {
+export default function Navbar({ empresa }: NavbarProps) {
   return (
     <section className="shadow-md sticky top-0 z-10 bg-white">
       {empresa.google_play && empresa.apple_store && <Tarja />}
@@ -64,7 +63,7 @@ export default async function Navbar({ citie, empresa }: NavbarProps) {
               {items.map((item, index) => (
                 <Link
                   key={index}
-                  href={`${citie?.slug ? `/${citie.slug}/${item.slug}` : `/`}`}
+                  href={`/${item.slug}`}
                   className="block py-2 text-lg font-semibold text-blue-700 hover:text-blue-900 focus:outline-none"
                   prefetch={false}
                 >
@@ -90,9 +89,7 @@ export default async function Navbar({ citie, empresa }: NavbarProps) {
                 className="flex items-center gap-2"
               >
                 <span className="text-blue-500 space-x-1">MX Fibra em</span>
-                <strong className="text-blue-500">
-                  {citie?.nome ? citie.nome : " Sua Cidade"}
-                </strong>
+                <ReturnCity />
                 <ChevronDown className="h-6 w-6 text-blue-500" />
               </Link>
             </div>
@@ -116,7 +113,7 @@ export default async function Navbar({ citie, empresa }: NavbarProps) {
             {items.map((item, index) => (
               <NavigationMenuLink key={index} asChild>
                 <Link
-                  href={`${citie?.slug ? `/${citie.slug}/${item.slug}` : `/`}`}
+                  href={`/${item.slug}`}
                   className="group inline-flex items-center px-4 py-2 text-lg font-medium rounded-md transition-colors bg-white text-blue-500 hover:bg-blue-100 hover:text-blue-600 focus:bg-blue-100 focus:text-blue-600"
                   prefetch={false}
                 >
@@ -142,13 +139,11 @@ export default async function Navbar({ citie, empresa }: NavbarProps) {
               {empresa.nome_do_app}
             </Button>
           )}
-          <Link href="/" prefetch={false} className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <span className="text-blue-500 space-x-1">MX Fibra em</span>
-            <strong className="text-blue-500">
-              {citie?.nome ? citie.nome : " Sua Cidade"}
-            </strong>
+            <ReturnCity />
             <ChevronDown className="h-6 w-6 text-blue-500" />
-          </Link>
+          </div>
         </div>
       </header>
     </section>

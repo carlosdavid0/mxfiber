@@ -1,13 +1,11 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { endpoint } from "@/constants/endpoint";
-import { Carrosel } from "@/types/banners";
 import { Cidade } from "@/types/cidades";
 import { Empresa } from "@/types/empresa";
 import request, { gql } from "graphql-request";
 
 type LayoutCidadesProps = {
-  children: React.ReactNode;
   params: { cidade: string };
 };
 
@@ -40,6 +38,7 @@ async function generalInfomations(citie: string) {
         whatsapp
         instagram
         facebook
+        sobre_a_empresa
         google_play
         apple_store
         nome_do_app
@@ -50,30 +49,6 @@ async function generalInfomations(citie: string) {
     `${`${endpoint}/graphql`}/graphql`,
     empresaQuery
   );
-  const bannerQuery = gql`
-    query Carrosel {
-    carrosel(filter: { cidades: { cidades_id: { slug: { _eq: "${citie}" } } } }) {
-        id
-        status
-        sort
-        user_created
-        date_created
-        user_updated
-        date_updated
-        cidades {
-            cidades_id {
-                slug
-            }
-        }
-        banner {
-            id
-        }
-        banner_mobile {
-            id
-        }
-    }
-        }
-  `;
 
   const data_citie: { cidades: Cidade[] } = await request(
     `${endpoint}/graphql`,
@@ -82,31 +57,31 @@ async function generalInfomations(citie: string) {
     .then((data) => {
       return data as { cidades: Cidade[] };
     })
-    .catch((error) => {
-      console.log(error);
+    .catch(() => {
       return { cidades: [] };
     });
-
-  const data_banner: { carrosel: Carrosel[] } = await request(
-    `${`${endpoint}/graphql`}/graphql`,
-    bannerQuery
-  );
 
   return {
     citie: data_citie.cidades[0],
     empresa: data_empresa.empresa,
-    banner: data_banner.carrosel,
   };
 }
 
-async function LayoutCidades({ children, params }: LayoutCidadesProps) {
+async function LayoutCidades({ params }: LayoutCidadesProps) {
   const Informations = await generalInfomations(params.cidade);
 
   return (
     <main className="bg-gray-100 min-h-screen max-h-full">
-      <Navbar citie={Informations.citie} empresa={Informations.empresa} />
-
-      <section>{children}</section>
+      <Navbar empresa={Informations.empresa} />
+      <section className="max-w-screen-xl lg:mx-auto mx-4 py-5 text-black">
+        <div
+          id="renderPrivacidadeContent"
+          className="prose-lg prose-h1:text-4xl max-w-full"
+          dangerouslySetInnerHTML={{
+            __html: Informations?.empresa?.privacidade,
+          }}
+        />
+      </section>
       <Footer data={Informations.empresa} />
     </main>
   );

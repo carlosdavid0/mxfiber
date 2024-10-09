@@ -1,8 +1,9 @@
 import { Empresa } from "@/types/empresa";
-import { Sva } from "@/types/planos";
 import { images } from "@/utils/images";
 import { MessageCircle } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { SvaGraphq } from ".";
 
 export type Service = {
   name: string;
@@ -12,40 +13,34 @@ export type Service = {
 };
 
 export type ottData = {
-  data: Sva;
+  data: SvaGraphq;
   empresa: Empresa;
 };
 
 export function CardOtts({ data, empresa }: ottData) {
-  console.log({
-    data,
-  });
-
   return (
     <div
-      key={data.sva_id?.nome}
-      className="flex flex-col rounded-lg overflow-hidden shadow-lg "
+      key={data?.nome}
+      className="flex flex-col rounded-lg overflow-hidden shadow-lg  select-none"
     >
-      {/* <div
-        className="h-48 bg-cover bg-center"
-        // style={{ backgroundImage: `url(${data.image})` }}
-      /> */}
-      {/* {flex flex-col justify-between p-4 bg-white flex-grow min-h-24} */}
-      <div className="flex flex-col p-4 justify-between min-h-72 bg-white flex-grow">
+      <div className="flex flex-col p-4 justify-between min-h- bg-white flex-grow">
         <div className="space-y-5 h-f">
-          <img
-            src={
-              images("https://cms.mxfibra.com", data?.sva_id?.icone?.id || "")
-                .url
-            }
+          <Image
+            src={images("https://cms.mxfibra.com", data?.icone?.id || "").url}
             alt=""
-            className="w-36 min-h-20"
+            width={500}
+            height={500}
+            className="w-full h-24 object-contain"
           />
-          <p className="text-sm text-gray-600 line-clamp-3 mt-10">
-            {data.sva_id?.descricao}
-          </p>
+          <h1 className="text-xl prose">{data?.nome}</h1>
+          <p className="text-sm prose line-clamp-3 mt-10">{data?.descricao}</p>
         </div>
-        <Link href={empresa.whatsapp}>
+        <Link
+          href={`
+            ${empresa.whatsapp}?text=Olá, gostaria de saber mais sobre o serviço ${data?.nome}
+          
+          `}
+        >
           <button className="flex items-center justify-center w-full rounded-full bg-green-500 px-4 py-2 text-white hover:bg-green-600 transition-colors mt-4">
             <span>conhecer mais</span>
             <MessageCircle className="ml-2 h-5 w-5" />

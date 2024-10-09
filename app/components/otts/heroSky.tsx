@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { Button } from "../ui/button";
 import { Empresa } from "@/types/empresa";
+import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
 type props = {
   empresa: Empresa;

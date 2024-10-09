@@ -1,49 +1,58 @@
 "use client";
+import { useCidades } from "@/hooks/useCidades";
 import { cn } from "@/lib/utils";
 import { Empresa } from "@/types/empresa";
-import { Sva } from "@/types/planos";
+import { gql, useQuery } from "@apollo/client";
 import { Gamepad2, Music, Play, Tv } from "lucide-react";
 import { CarouselDestaquesOTT } from "./carrousell";
 
 type Props = {
-  planos: Plano[];
   empresa: Empresa;
 };
 
-type Plano = {
-  svas: Sva[];
+const OttsQuery = gql`
+  query Planos {
+    sva {
+      nome
+      status
+      descricao
+      destaque
+      icone_dark {
+        id
+      }
+      icone {
+        id
+      }
+    }
+  }
+`;
+
+export type SvaGraphq = {
+  nome: string;
+  status: string;
+  descricao: string;
+  destaque: boolean;
+  icone_dark: {
+    id: string;
+  };
+  icone: {
+    id: string;
+  };
 };
 
-function processarSvas(planos: Plano[]): Sva[] {
-  const svas: Sva[] = [];
+type QuerySva = {
+  sva: SvaGraphq[];
+};
 
-  planos.forEach((plano) => {
-    plano.svas.forEach((sva) => {
-      // Remove duplicados
-      if (!svas.some((s) => s.sva_id?.nome === sva.sva_id?.nome)) {
-        svas.push(sva);
-      }
-    });
+export function HeroOTTSDestaque({ empresa }: Props) {
+  const { cidade } = useCidades();
+
+  const { data, loading } = useQuery<QuerySva>(OttsQuery, {
+    context: { clientName: "ott" },
+    skip: !cidade,
   });
 
-  // Ordena os SVAs
-  const sortedSvas = svas.sort((a, b) => {
-    // Primeiro, compara o status de destaque
-    if (a.sva_id.destaque && !b.sva_id.destaque) return -1;
-    if (!a.sva_id.destaque && b.sva_id.destaque) return 1;
-
-    // Se os statuses forem iguais, compara o nome
-    if (a.sva_id.nome < b.sva_id.nome) return -1;
-    if (a.sva_id.nome > b.sva_id.nome) return 1;
-
-    // Se os statuses e nomes forem iguais, retorna 0
-    return 0;
-  });
-
-  return sortedSvas;
-}
-export default function Component({ planos, empresa }: Props) {
-  const svas = processarSvas(planos);
+  if (loading) return null;
 
   return (
     <section
@@ -71,7 +80,7 @@ export default function Component({ planos, empresa }: Props) {
       </div>
 
       <div className="px-4 col-span-2">
-        <CarouselDestaquesOTT empresa={empresa} data={svas} />
+        <CarouselDestaquesOTT empresa={empresa} data={data?.sva || []} />
       </div>
     </section>
   );

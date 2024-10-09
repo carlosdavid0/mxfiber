@@ -7,24 +7,77 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useCidades } from "@/hooks/useCidades";
 import { cn } from "@/lib/utils";
 import { Carrosel } from "@/types/banners";
 import { images } from "@/utils/images";
+import { gql, useQuery } from "@apollo/client";
 import Autoplay from "embla-carousel-autoplay";
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 
 type HeroCarrouselProps = {
   hiddenOnMobile?: boolean;
   Carrousel: Carrosel[];
 };
 
+const queryCarrousel = gql`
+  query CarroselSemCidade($slug: String!) {
+    carrosel(filter: { cidades: { cidades_id: { slug: { _eq: $slug } } } }) {
+      id
+      status
+      user_created
+      date_created
+      user_updated
+      date_updated
+      cidades {
+        cidades_id {
+          id
+        }
+      }
+      banner {
+        id
+      }
+      banner_mobile {
+        id
+      }
+    }
+  }
+`;
+
 export function HeroCarrousel({
   hiddenOnMobile = true,
   Carrousel,
 }: HeroCarrouselProps) {
-  const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: false })
-  );
+  const { cidade } = useCidades();
+
+  const { data, observable } = useQuery(queryCarrousel, {
+    variables: {
+      slug: cidade?.slug,
+    },
+    skip: !cidade,
+  });
+
+  const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: false }));
+
+  const [allCarrousel, setAllCarrousel] = useState<Carrosel[]>([]);
+
+  useEffect(() => {
+    setAllCarrousel(Carrousel);
+  }, [Carrousel]);
+
+  useEffect(() => {
+    if (data) {
+      setAllCarrousel([...Carrousel, ...data.carrosel]);
+    }
+  }, [Carrousel, data]);
+
+  useEffect(() => {
+    if (cidade) {
+      observable.refetch({
+        slug: cidade.slug,
+      });
+    }
+  }, [cidade, observable]);
 
   if (Carrousel.length === 0) return null;
 
@@ -39,7 +92,7 @@ export function HeroCarrousel({
       onMouseLeave={() => plugin.current.play()}
     >
       <CarouselContent>
-        {Carrousel.map((src, index) => (
+        {allCarrousel.map((src, index) => (
           <CarouselItem key={index}>
             <div className="relative w-full h-[400px] md:h-full overflow-hidden">
               <picture>

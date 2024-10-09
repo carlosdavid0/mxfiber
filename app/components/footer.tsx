@@ -14,11 +14,7 @@ export default function Footer({ data }: empresas) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center md:text-left">
             <h3 className="font-bold text-lg mb-4">Sobre nós</h3>
-            <p className="text-sm">
-              A MX Fibra é uma provedora de internet de alta velocidade que atua
-              principalmente no estado do Maranhão, oferecendo serviços de fibra
-              óptica.
-            </p>
+            <p className="text-sm">{data.sobre_a_empresa}</p>
           </div>
 
           <div className="text-center md:text-left">

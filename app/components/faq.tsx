@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Accordion,
   AccordionContent,
@@ -6,11 +5,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
-import { HelpCircle } from "lucide-react";
-import { Button } from "./ui/button";
-import { Faq } from "@/types/faq";
 import { Empresa } from "@/types/empresa";
+import { Faq } from "@/types/faq";
+import { HelpCircle } from "lucide-react";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 type data = {
   data: Faq[];
@@ -33,7 +32,11 @@ export function ImprovedFAQSection({ data, empresa }: data) {
             Tire suas dúvidas sobre a internet MX Fibra
           </h2>
 
-          <Link href={empresa.whatsapp}>
+          <Link
+            href={`
+            ${empresa.whatsapp}?text=Olá, gostaria de tirar algumas dúvidas sobre a internet MX Fibra
+            `}
+          >
             <Button className="h-16 lg:w-full w-fit rounded-lg bg-green-600 hover:bg-green-700 mt-4">
               Assine pelo WhatsApp
             </Button>

@@ -1,11 +1,12 @@
 export const items = [
   {
     name: "Para Você",
-    slug: "para-voce",
+    slug: "?planos=para-voce",
+
   },
   {
     name: "Para Empresas",
-    slug: "para-empresas",
+    slug: "?planos=para-empresas",
   },
 
   {

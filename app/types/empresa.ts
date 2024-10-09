@@ -15,6 +15,7 @@ export interface Empresa {
   privacidade: string;
   whatsapp: string;
   instagram: string;
+  sobre_a_empresa: string;
   facebook: string;
   google_play: string;
   apple_store: string;

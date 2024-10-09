@@ -1,17 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import * as React from "react";
 
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { CardOtts } from "./cardOtts";
-import { Sva } from "@/types/planos";
 import { Empresa } from "@/types/empresa";
+import { SvaGraphq } from ".";
+import { CardOtts } from "./cardOtts";
 
 type CarouselPlanosProps = {
-  data: Sva[];
+  data: SvaGraphq[];
   empresa: Empresa;
 };
 
