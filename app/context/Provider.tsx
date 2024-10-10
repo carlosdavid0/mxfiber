@@ -19,7 +19,7 @@ const client = new ApolloClient({
 
 export default function Provider({ children }: ProviderProps) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className="w-full h-screen bg-blue-600"></div>}>
       <ApolloProvider client={client}>
         <GlobalProvider.Provider value={{}}>
           <CidadeProvider>{children}</CidadeProvider>
