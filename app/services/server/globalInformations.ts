@@ -37,8 +37,6 @@ export async function generalInfomations() {
         faq {
           id
           status
-          user_created
-          date_created
           pergunta
           resposta
         }

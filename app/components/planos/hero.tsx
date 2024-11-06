@@ -146,7 +146,7 @@ export function HeroPlanos({ empresa }: HeroPlanosProps) {
           <span>de</span>
           <strong>conexão</strong>
           <span>por toda sua</span>
-          <strong>{planoType === "para-empresa" ? "empresa" : "casa"}</strong>
+          <strong>{planoType === "para-empresas" ? "empresa" : "casa"}</strong>
         </h1>
 
         <CarouselPlanos
