@@ -10,6 +10,9 @@ async function getInformationsAbout() {
         historia_da_empresa
         missao
         visao
+         imagem{
+            id
+        }
         diferencial
         nossos_valores {
           valores_id {

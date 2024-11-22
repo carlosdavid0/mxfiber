@@ -1,5 +1,6 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
+import { endpoint } from "@/constants/endpoint";
 import { Icon } from "@iconify/react";
 import { motion, useAnimation } from "framer-motion";
 import { Target, Zap } from "lucide-react";
@@ -20,6 +21,9 @@ export interface QuemSomosData {
   missao: string;
   visao: string;
   diferencial: string[];
+  imagem: {
+    id: string;
+  };
   nossos_valores: Valores[];
 }
 
@@ -110,7 +114,7 @@ export function SectionInstitucional({ data }: props) {
           variants={strongAnimation}
         >
           <motion.img
-            src="https://diginetelecom.com/wp-content/uploads/2024/06/modern-warehouse-building-storage-cargo-goods-industrial-supply-chain.jpg"
+            src={`${endpoint}/assets/${data.imagem.id}`}
             alt="Nossa Empresa"
             className="w-full h-64 sm:h-96 lg:w-1/3 object-cover object-center rounded-lg mb-8 lg:mb-0"
             whileHover={{ scale: 1.05 }}
