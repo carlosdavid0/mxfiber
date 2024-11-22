@@ -1,12 +1,35 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { CheckCircle, Target, Heart, ThumbsUp, Zap } from "lucide-react";
+import { Icon } from "@iconify/react";
 import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { Target, Zap } from "lucide-react";
 import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
-export function SectionInstitucional() {
+
+interface Valores {
+  valores_id: {
+    descricao: string;
+    icone: string;
+    valor: string;
+  };
+}
+
+export interface QuemSomosData {
+  quem_somos: string;
+  historia_da_empresa: string;
+  missao: string;
+  visao: string;
+  diferencial: string[];
+  nossos_valores: Valores[];
+}
+
+
+type props = {
+  data: QuemSomosData;
+}
+
+export function SectionInstitucional({data}:props) {
   const strongAnimation = {
     hidden: { opacity: 0, scale: 0.8, y: 100 },
     visible: {
@@ -31,7 +54,6 @@ export function SectionInstitucional() {
   const [missionVisionRef, missionVisionInView] = useInView({ threshold: 0.1 });
   const [valoresRef, valoresInView] = useInView({ threshold: 0.1 });
   const [diferenciaisRef, diferenciaisInView] = useInView({ threshold: 0.1 });
-  const [contatoRef, contatoInView] = useInView({ threshold: 0.1 });
 
   useEffect(() => {
     if (headerInView) headerAnimation.start("visible");
@@ -49,15 +71,12 @@ export function SectionInstitucional() {
     if (diferenciaisInView) diferenciaisAnimation.start("visible");
     else diferenciaisAnimation.start("hidden");
 
-    if (contatoInView) contatoAnimation.start("visible");
-    else contatoAnimation.start("hidden");
   }, [
     headerInView,
     historyInView,
     missionVisionInView,
     valoresInView,
     diferenciaisInView,
-    contatoInView,
     headerAnimation,
     historyAnimation,
     missionVisionAnimation,
@@ -79,9 +98,7 @@ export function SectionInstitucional() {
         <div className="container mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl font-bold mb-4">Quem Somos</h1>
           <p className="text-base sm:text-xl max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quia, eaque, voluptatem nemo quod atque quos repudiandae
-            quae autem doloremque. Consequuntur, voluptatem doloribus.
+           {data.quem_somos}
           </p>
         </div>
       </motion.header>
@@ -90,7 +107,7 @@ export function SectionInstitucional() {
         {/* Nossa História */}
         <motion.section
           ref={historyRef}
-          className="py-8 sm:py-16 container mx-auto flex flex-col-reverse lg:flex-row lg:items-center"
+          className="py-8 sm:py-16 mx-auto flex flex-col-reverse lg:flex-row lg:items-center max-w-screen-xl"
           initial="hidden"
           animate={historyAnimation}
           variants={strongAnimation}
@@ -106,10 +123,7 @@ export function SectionInstitucional() {
               Nossa História
             </h2>
             <p className="text-black sm:text-lg max-w-3xl mx-auto lg:mx-0">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-              voluptatum, quia, eaque, voluptatem nemo quod atque quos
-              repudiandae quae autem doloremque. Consequuntur, voluptatem
-              doloribus.
+            {data.historia_da_empresa}
             </p>
           </div>
         </motion.section>
@@ -131,8 +145,7 @@ export function SectionInstitucional() {
                     Nossa Missão
                   </h3>
                   <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Inventore eveniet
+                   {data.missao}
                   </p>
                 </CardContent>
               </motion.div>
@@ -143,9 +156,7 @@ export function SectionInstitucional() {
                     Nossa Visão
                   </h3>
                   <p>
-                    Ser reconhecida globalmente como a parceira preferencial em
-                    transformação digital, definindo o padrão de excelência em
-                    inovação tecnológica.
+                  {data.visao}
                   </p>
                 </CardContent>
               </motion.div>
@@ -154,49 +165,34 @@ export function SectionInstitucional() {
         </motion.section>
 
         {/* Nossos Valores */}
+        {data.nossos_valores && data.nossos_valores.length !== 0 &&  
         <motion.section
           ref={valoresRef}
-          className="py-12 sm:py-16"
+          className="py-12 sm:py-16 max-w-screen-xl mx-auto"
           initial="hidden"
           animate={valoresAnimation}
           variants={strongAnimation}
         >
-          <div className="container mx-auto px-4 text-black">
+        <div className="container mx-auto px-4 text-black">
             <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12">
               Nossos Valores
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: CheckCircle,
-                  title: "Excelência",
-                  description: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore eveniet `,
-                },
-                {
-                  icon: Heart,
-                  title: "Paixão",
-                  description:
-                    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, officia? Magni quis quidem reprehenderit odit rem, non deleniti nostrum aperiam voluptatum excepturi eligendi.",
-                },
-                {
-                  icon: ThumbsUp,
-                  title: "Integridade",
-                  description: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore eveniet`,
-                },
-              ].map((value) => (
-                <Card key={value.title} className="text-center">
+              {data?.nossos_valores?.map((value) => (
+                <Card key={value.valores_id.valor} className="text-center">
                   <CardContent className="pt-6">
-                    <value.icon className="w-12 h-12 mx-auto mb-4 text-primary" />
+                   <Icon icon={value.valores_id.icone} className="w-12 h-12 text-blue-700 mx-auto" />
                     <h3 className="text-xl font-semibold mb-2">
-                      {value.title}
+                      {value.valores_id.valor}
                     </h3>
-                    <p className="text-muted-foreground">{value.description}</p>
+                    <p className="text-muted-foreground">{value.valores_id.descricao}</p>
                   </CardContent>
                 </Card>
               ))}
             </div>
           </div>
         </motion.section>
+        }
 
         {/* Nossos Diferenciais */}
         <motion.section
@@ -211,14 +207,7 @@ export function SectionInstitucional() {
               Nossos Diferenciais
             </h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                `Lorem ipsum, dolor sit amet consectetur`,
-                `Lorem ipsum, dolor sit amet consectetur`,
-                `Lorem ipsum, dolor sit amet consectetur`,
-                `Lorem ipsum, dolor sit amet consectetur`,
-                `Lorem ipsum, dolor sit amet consectetur`,
-                `Lorem ipsum, dolor sit amet consectetur`,
-              ].map((diferencial) => (
+              {data.diferencial.map((diferencial) => (
                 <li
                   key={diferencial}
                   className="flex items-center gap-2 justify-center"
@@ -231,23 +220,12 @@ export function SectionInstitucional() {
           </div>
         </motion.section>
 
-        {/* Contato */}
-        <motion.section
-          ref={contatoRef}
-          className="py-12 sm:py-16"
+        <div
+          className="py-12 sm:py-16 max-w-screen-xl mx-auto"
           initial="hidden"
-          animate={contatoAnimation}
-          variants={strongAnimation}
+        
         >
-          <div className="container mx-auto px-4">
-            <div className="text-center">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-6">
-                Fale Conosco
-              </h2>
-              <Button>Entre em Contato</Button>
-            </div>
           </div>
-        </motion.section>
       </main>
     </div>
   );
