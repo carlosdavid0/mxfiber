@@ -6,7 +6,6 @@ import { Target, Zap } from "lucide-react";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-
 interface Valores {
   valores_id: {
     descricao: string;
@@ -24,12 +23,11 @@ export interface QuemSomosData {
   nossos_valores: Valores[];
 }
 
-
 type props = {
   data: QuemSomosData;
-}
+};
 
-export function SectionInstitucional({data}:props) {
+export function SectionInstitucional({ data }: props) {
   const strongAnimation = {
     hidden: { opacity: 0, scale: 0.8, y: 100 },
     visible: {
@@ -70,7 +68,6 @@ export function SectionInstitucional({data}:props) {
 
     if (diferenciaisInView) diferenciaisAnimation.start("visible");
     else diferenciaisAnimation.start("hidden");
-
   }, [
     headerInView,
     historyInView,
@@ -98,7 +95,7 @@ export function SectionInstitucional({data}:props) {
         <div className="container mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl font-bold mb-4">Quem Somos</h1>
           <p className="text-base sm:text-xl max-w-2xl mx-auto">
-           {data.quem_somos}
+            {data.quem_somos}
           </p>
         </div>
       </motion.header>
@@ -123,7 +120,7 @@ export function SectionInstitucional({data}:props) {
               Nossa História
             </h2>
             <p className="text-black sm:text-lg max-w-3xl mx-auto lg:mx-0">
-            {data.historia_da_empresa}
+              {data.historia_da_empresa}
             </p>
           </div>
         </motion.section>
@@ -144,9 +141,7 @@ export function SectionInstitucional({data}:props) {
                     <Target className="w-6 h-6 mr-2 text-primary-foreground" />
                     Nossa Missão
                   </h3>
-                  <p>
-                   {data.missao}
-                  </p>
+                  <p>{data.missao}</p>
                 </CardContent>
               </motion.div>
               <motion.div className="bg-transparent text-white">
@@ -155,9 +150,7 @@ export function SectionInstitucional({data}:props) {
                     <Zap className="w-6 h-6 mr-2 text-primary-foreground" />
                     Nossa Visão
                   </h3>
-                  <p>
-                  {data.visao}
-                  </p>
+                  <p>{data.visao}</p>
                 </CardContent>
               </motion.div>
             </div>
@@ -165,34 +158,39 @@ export function SectionInstitucional({data}:props) {
         </motion.section>
 
         {/* Nossos Valores */}
-        {data.nossos_valores && data.nossos_valores.length !== 0 &&  
-        <motion.section
-          ref={valoresRef}
-          className="py-12 sm:py-16 max-w-screen-xl mx-auto"
-          initial="hidden"
-          animate={valoresAnimation}
-          variants={strongAnimation}
-        >
-        <div className="container mx-auto px-4 text-black">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12">
-              Nossos Valores
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-              {data?.nossos_valores?.map((value) => (
-                <Card key={value.valores_id.valor} className="text-center">
-                  <CardContent className="pt-6">
-                   <Icon icon={value.valores_id.icone} className="w-12 h-12 text-blue-700 mx-auto" />
-                    <h3 className="text-xl font-semibold mb-2">
-                      {value.valores_id.valor}
-                    </h3>
-                    <p className="text-muted-foreground">{value.valores_id.descricao}</p>
-                  </CardContent>
-                </Card>
-              ))}
+        {data.nossos_valores && data.nossos_valores.length !== 0 && (
+          <motion.section
+            ref={valoresRef}
+            className="py-12 sm:py-16 max-w-screen-xl mx-auto"
+            initial="hidden"
+            animate={valoresAnimation}
+            variants={strongAnimation}
+          >
+            <div className="container mx-auto px-4 text-black">
+              <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12">
+                Nossos Valores
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                {data?.nossos_valores?.map((value) => (
+                  <Card key={value.valores_id.valor} className="text-center">
+                    <CardContent className="pt-6">
+                      <Icon
+                        icon={value.valores_id.icone}
+                        className="w-12 h-12 text-blue-700 mx-auto"
+                      />
+                      <h3 className="text-xl font-semibold mb-2">
+                        {value.valores_id.valor}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {value.valores_id.descricao}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-          </div>
-        </motion.section>
-        }
+          </motion.section>
+        )}
 
         {/* Nossos Diferenciais */}
         <motion.section
@@ -220,12 +218,7 @@ export function SectionInstitucional({data}:props) {
           </div>
         </motion.section>
 
-        <div
-          className="py-12 sm:py-16 max-w-screen-xl mx-auto"
-          initial="hidden"
-        
-        >
-          </div>
+        <div className="py-12 sm:py-16 max-w-screen-xl mx-auto"></div>
       </main>
     </div>
   );
