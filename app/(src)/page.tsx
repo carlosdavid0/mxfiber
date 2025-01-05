@@ -33,7 +33,7 @@ async function getEmpresaInfo() {
   `;
 
   const data_empresa: { empresa: Empresa } = await request(
-    `${`${endpoint}/graphql`}/graphql`,
+    `${endpoint}/graphql`,
     empresaQuery
   );
 
@@ -65,7 +65,7 @@ async function getCarrouselBase() {
   `;
 
   const data_carrosel: { carrosel: Carrosel[] } = await request(
-    `${`${endpoint}/graphql`}/graphql`,
+    `${endpoint}/graphql`,
     empresaQuery
   );
 

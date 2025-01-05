@@ -79,7 +79,7 @@ export function HeroCarrousel({
     }
   }, [cidade, observable]);
 
-  if (Carrousel.length === 0) return null;
+  if (allCarrousel.length === 0) return null;
 
   return (
     <Carousel
@@ -122,18 +122,24 @@ export function HeroCarrousel({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious
-        className={cn(
-          "absolute left-5 top-1/2 transform -translate-y-1/2 z-0 ",
-          hiddenOnMobile ? "hidden lg:flex" : ""
-        )}
-      />
-      <CarouselNext
-        className={cn(
-          "absolute right-5 top-1/2 transform -translate-y-1/2 z-0 ",
-          hiddenOnMobile ? "hidden lg:flex" : ""
-        )}
-      />
+
+      {allCarrousel.length > 1 && (
+        <CarouselPrevious
+          className={cn(
+            "absolute left-5 top-1/2 transform -translate-y-1/2 z-0 ",
+            hiddenOnMobile ? "hidden lg:flex" : ""
+          )}
+        />
+      )}
+
+      {allCarrousel.length > 1 && (
+        <CarouselNext
+          className={cn(
+            "absolute right-5 top-1/2 transform -translate-y-1/2 z-0 ",
+            hiddenOnMobile ? "hidden lg:flex" : ""
+          )}
+        />
+      )}
     </Carousel>
   );
 }
